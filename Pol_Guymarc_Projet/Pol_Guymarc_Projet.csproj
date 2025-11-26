@@ -1,0 +1,94 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    </PropertyGroup>
+
+    <!--We import our pictures that are in another folder-->
+    <ItemGroup>
+        <AvaloniaResource  Include="images\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.3.6"/>
+        <PackageReference Include="Avalonia.Desktop" Version="11.3.6"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.6"/>
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.6"/>
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.3.6">
+            <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+            <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="GameWindow.axaml.cs">
+        <DependentUpon>GameWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="SoldierWindow.axaml.cs">
+        <DependentUpon>SoldierWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="MerchantWindow.axaml.cs">
+        <DependentUpon>MerchantWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="InventaryWindow.axaml.cs">
+        <DependentUpon>InventaryWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="MerchantObjectWindow.axaml.cs">
+        <DependentUpon>MerchantObjectWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="MerchandSoldierWindow.axaml.cs">
+        <DependentUpon>MerchandSoldierWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="ObjectToGiveSoldier.axaml.cs">
+        <DependentUpon>ObjectToGiveSoldier.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="MerchantFoodWindow.axaml.cs">
+        <DependentUpon>MerchantFoodWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="SelectingMissionToSendSoldier.axaml.cs">
+        <DependentUpon>SelectingMissionToSendSoldier.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="SelectingSoldierToStartMissionWindow.axaml.cs">
+        <DependentUpon>SelectingSoldierToStartMissionWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="MissionWindow.axaml.cs">
+        <DependentUpon>MissionWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="SelectingSoldierToGiveObjectWindow.axaml.cs">
+        <DependentUpon>SelectingSoldierToGiveObjectWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="GoingAfternoon.axaml.cs">
+        <DependentUpon>GoingAfternoon.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="GoingEvening.axaml.cs">
+        <DependentUpon>GoingEvening.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="NewMorningAndDay.axaml.cs">
+        <DependentUpon>NewDay.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="YouLoose.axaml.cs">
+        <DependentUpon>YouLoose.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+</Project>

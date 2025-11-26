@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Pol_Guymarc_Projet.SelectingMissionToSendSoldierWindow"
+        Title="Pol_Guymarc_Projet"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen">
+        
+        <Window.Background>
+                <ImageBrush Source="avares://Pol_Guymarc_Projet/images/MissionSelection.png" Stretch="UniformToFill"/>
+        </Window.Background>
+
+        <StackPanel Name="MainPanel">
+                <Button Click="BackToMainSoldier" Content="Retour"/>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Button Name="GoLeft" Click="GoLeftToMission" Content="←" IsVisible="True"/>
+
+                        <StackPanel x:Name="SeeMission" Orientation="Vertical">
+                                <TextBlock x:Name="MissionName"/>
+                                <Image Height="300" Width="230" x:Name="MissionPicture"/>
+                                <TextBlock x:Name="MissionDifficulty"/>
+                                <TextBlock x:Name="MissionNumberOfDays"/>
+                                <TextBlock x:Name="MissionSurvivingChance"/>
+                                <TextBlock x:Name="MissionState"/>
+                                <TextBlock x:Name="MissionEarnings"/>
+                                <TextBlock x:Name="MissionObjectsToReceive"/>
+                                <Button Click="ValidateSendingToMission" Name="StartMission" Content="Débuter la mission" IsVisible="True">
+                                        <Button.Flyout>
+                                                <Flyout>
+                                                        <Border Background="#333" CornerRadius="5" Padding="10">
+                                                                <TextBlock Name="ValidatingSendingSoldierToMission"
+                                                                           Foreground="White"/>
+                                                        </Border>
+                                                </Flyout>
+                                        </Button.Flyout>
+                                </Button>
+                        </StackPanel>
+                        <Button Name="GoRight" Click="GoRightToMission" Content="→" IsVisible="True" />
+                </StackPanel>
+        </StackPanel>
+</Window>
+                

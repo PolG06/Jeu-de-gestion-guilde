@@ -1,0 +1,63 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Pol_Guymarc_Projet.SoldierWindow"
+        Title="Pol_Guymarc_Projet"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen">
+        
+        
+        <Window.Background>
+                <ImageBrush Source="avares://Pol_Guymarc_Projet/images/SoldierSelection.png" Stretch="UniformToFill"/>
+        </Window.Background>
+        
+        <StackPanel Name="MainPanel">
+                
+                <Button Click="BackToMainMenue" Content="Revenir au Menu Principal" Background="black"/>
+                <Border Background="black" CornerRadius="10" Padding="10" Width="700">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" >
+                                <Button Click="GoLeftToSoldier" Content="←" />
+                                
+                                <StackPanel x:Name="SeeSoldier" Orientation="Vertical" Background="black"  >
+                                        <StackPanel HorizontalAlignment="Center">
+                                                <TextBlock x:Name="SoldierName" Padding="2" FontSize="20" FontWeight="Bold"/>
+                                        </StackPanel>
+                                        <Image Height="300" Width="230" x:Name="SoldierPicture"/>
+                                        <TextBlock x:Name="SoldierLevel" Padding="2"/>
+                                        <TextBlock x:Name="SoldierExp" Padding="2"/>
+                                        <StackPanel>
+                                                <TextBlock x:Name="SoldierObjectPossessed"/>
+                                                <Image x:Name="SoldierObjectPossessedPicture" Height="50" Width="40"/>
+                                        </StackPanel>
+                                        <TextBlock x:Name="SoldierDescription" Padding="2"/>
+                                        <TextBlock x:Name="SoldierState" Padding="2"/>
+                                        <TextBlock x:Name="SoldierFatigue" Padding="2"/>
+                                        <TextBlock x:Name="SoldierDamages" Padding="2"/>
+                                        <TextBlock x:Name="SoldierDiscretionPoints" Padding="2"/>
+                                        <TextBlock x:Name="SoldierPv" Padding="2"/>
+                                        <TextBlock x:Name="SoldierNumberOfBread" Padding="2"/>
+                                        <TextBlock x:Name="SoldierNumberOfMeats" Padding="2"/>
+                                        <TextBlock x:Name="SoldierSalaryADay" Padding="2,2,2,10"/>
+                                        <StackPanel Orientation="Horizontal" >
+                                                <Button Name="SoldierSendToMission" Content="Envoyer ce soldat en mission" Click="SendToMission"/>
+                                                <Button Name="SoldierGiveObject" Content="Donner un objet à ce soldat" Click="GiveObject"/>
+                                                <Button Name="SoldierGoSleep" Content="Envoyer ce soldat au repos" Click="GoSleep">
+                                                        <Button.Flyout>
+                                                                <Flyout>
+                                                                        <Border Background="#333" CornerRadius="5" Padding="10">
+                                                                                <TextBlock Name="SoldierGoSleepText"
+                                                                                        Foreground="White"/>
+                                                                        </Border>
+                                                                </Flyout>
+                                                        </Button.Flyout>
+                                                </Button>
+                                        </StackPanel>
+                                </StackPanel>
+                                <Button Click="GoRightToSoldier" Content="→"  />
+                        </StackPanel>
+                </Border>
+        </StackPanel>
+        
+</Window>

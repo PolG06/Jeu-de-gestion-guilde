@@ -1,0 +1,76 @@
+is_global = true
+build_property.AvaloniaNameGeneratorIsEnabled = true
+build_property.AvaloniaNameGeneratorBehavior = InitializeComponent
+build_property.AvaloniaNameGeneratorDefaultFieldModifier = internal
+build_property.AvaloniaNameGeneratorFilterByPath = *
+build_property.AvaloniaNameGeneratorFilterByNamespace = *
+build_property.AvaloniaNameGeneratorViewFileNamingStrategy = NamespaceAndClassName
+build_property.AvaloniaNameGeneratorAttachDevTools = true
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Pol_Guymarc_Projet
+build_property.ProjectDir = D:\Cours Sup De Vinci B2\C#\Pol_Guymarc_Projet_C#\Pol_Guymarc_Projet\Pol_Guymarc_Projet\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[D:/Cours Sup De Vinci B2/C\#/Pol_Guymarc_Projet_C\#/Pol_Guymarc_Projet/Pol_Guymarc_Projet/App.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/Cours Sup De Vinci B2/C\#/Pol_Guymarc_Projet_C\#/Pol_Guymarc_Projet/Pol_Guymarc_Projet/GameWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/Cours Sup De Vinci B2/C\#/Pol_Guymarc_Projet_C\#/Pol_Guymarc_Projet/Pol_Guymarc_Projet/GoingAfternoon.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/Cours Sup De Vinci B2/C\#/Pol_Guymarc_Projet_C\#/Pol_Guymarc_Projet/Pol_Guymarc_Projet/GoingEvening.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/Cours Sup De Vinci B2/C\#/Pol_Guymarc_Projet_C\#/Pol_Guymarc_Projet/Pol_Guymarc_Projet/InventaryWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/Cours Sup De Vinci B2/C\#/Pol_Guymarc_Projet_C\#/Pol_Guymarc_Projet/Pol_Guymarc_Projet/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/Cours Sup De Vinci B2/C\#/Pol_Guymarc_Projet_C\#/Pol_Guymarc_Projet/Pol_Guymarc_Projet/MerchandSoldierWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/Cours Sup De Vinci B2/C\#/Pol_Guymarc_Projet_C\#/Pol_Guymarc_Projet/Pol_Guymarc_Projet/MerchantFoodWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/Cours Sup De Vinci B2/C\#/Pol_Guymarc_Projet_C\#/Pol_Guymarc_Projet/Pol_Guymarc_Projet/MerchantObjectWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/Cours Sup De Vinci B2/C\#/Pol_Guymarc_Projet_C\#/Pol_Guymarc_Projet/Pol_Guymarc_Projet/MerchantWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/Cours Sup De Vinci B2/C\#/Pol_Guymarc_Projet_C\#/Pol_Guymarc_Projet/Pol_Guymarc_Projet/MissionWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/Cours Sup De Vinci B2/C\#/Pol_Guymarc_Projet_C\#/Pol_Guymarc_Projet/Pol_Guymarc_Projet/NewMorningAndDay.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/Cours Sup De Vinci B2/C\#/Pol_Guymarc_Projet_C\#/Pol_Guymarc_Projet/Pol_Guymarc_Projet/ObjectToGiveSoldier.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/Cours Sup De Vinci B2/C\#/Pol_Guymarc_Projet_C\#/Pol_Guymarc_Projet/Pol_Guymarc_Projet/SelectingMissionToSendSoldier.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/Cours Sup De Vinci B2/C\#/Pol_Guymarc_Projet_C\#/Pol_Guymarc_Projet/Pol_Guymarc_Projet/SelectingSoldierToGiveObjectWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/Cours Sup De Vinci B2/C\#/Pol_Guymarc_Projet_C\#/Pol_Guymarc_Projet/Pol_Guymarc_Projet/SelectingSoldierToStartMissionWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/Cours Sup De Vinci B2/C\#/Pol_Guymarc_Projet_C\#/Pol_Guymarc_Projet/Pol_Guymarc_Projet/SoldierWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/Cours Sup De Vinci B2/C\#/Pol_Guymarc_Projet_C\#/Pol_Guymarc_Projet/Pol_Guymarc_Projet/YouLoose.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

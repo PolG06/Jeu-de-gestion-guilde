@@ -1,0 +1,75 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Pol_Guymarc_Projet.YouLooseWindow"
+        Title="Pol_Guymarc_Projet"
+        WindowState="Maximized"
+        Opened="ShowEndGame"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Background>
+        <ImageBrush Source="avares://Pol_Guymarc_Projet/images/ObjectSelection.jpg" Stretch="UniformToFill"/>
+    </Window.Background>
+
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#2D2D3A"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="BorderBrush" Value="#444"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style Selector="TextBlock">
+            <Setter Property="Foreground" Value="white"/>
+            <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </Window.Styles>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+
+        <StackPanel Name="MainPanel" Margin="20" Spacing="20">
+
+            <TextBlock Text="Aïe Vous avez perdu!"/>
+            <TextBlock Text="Vous pouvez faire mieux!"/>
+            <TextBlock Name="DayScore" Text="Vous vous êtes arrêté au jour n°"/>
+
+            <StackPanel Name="NotEnoughMoney" IsVisible="False" Spacing="5">
+                <TextBlock Text="Vous n'avez pas assez d'argent pour continuer la journée:"/>
+                <TextBlock Name="MoneyWeHave" Text="L'argent que vous avez:"/>
+                <TextBlock Name="MoneyWeOwedSoldiers" Text="L'argent que vous devez à vos soldats:"/>
+            </StackPanel>
+
+            <StackPanel Name="NotEnoughBreads" IsVisible="False" Spacing="5">
+                <TextBlock Text="Vous n'avez pas assez de pains à donner à vos soldats:"/>
+                <TextBlock Name="BreadsWeHave" Text="Le nombre de pains que vous avez:"/>
+                <TextBlock Name="BreadsComing" Text="Le nombre de pains commandés d'hier qui arrivent aujourd'hui:"/>
+                <TextBlock Name="BreadsWeOwedSoldiers" Text="Le nombre de pains que vous devez à vos soldats:"/>
+            </StackPanel>
+
+            <StackPanel Name="NotEnoughMeats" IsVisible="False" Spacing="5">
+                <TextBlock Text="Vous n'avez pas assez de viandes à donner à vos soldats:"/>
+                <TextBlock Name="MeatsWeHave" Text="Le nombre de viandes que vous avez:"/>
+                <TextBlock Name="MeatsComing" Text="Le nombre de viandes commandées d'hier qui arrivent aujourd'hui:"/>
+                <TextBlock Name="MeatsWeOwedSoldiers" Text="Le nombre de viandes que vous devez à vos soldats:"/>
+            </StackPanel>
+
+            <StackPanel Name="NotEnoughSoldiers" IsVisible="False" Spacing="5">
+                <TextBlock Name="SoldiersWeHave" Text="Tous vos soldats sont morts ou blessés."/>
+            </StackPanel>
+
+            <Button Click="ExitTheGame" Content="Accepter la défaite"/>
+
+        </StackPanel>
+
+    </ScrollViewer>
+
+</Window>

@@ -1,0 +1,45 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Pol_Guymarc_Projet.MissionWindow"
+        Title="Pol_Guymarc_Projet"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen">
+        
+        <Window.Background>
+                <ImageBrush Source="avares://Pol_Guymarc_Projet/images/MissionSelection.png" Stretch="UniformToFill"/>
+        </Window.Background>
+        
+        <StackPanel Name="MainPanel">
+                <Button Click="BackToMainMenue" Content="Revenir au Menu Principal" Background="Black"/>
+                <Border Background="black" CornerRadius="10" Padding="10" Width="330">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Black">
+                                <Button Click="GoLeftToMission" Content="←" />
+
+                                <StackPanel x:Name="SeeMission" Orientation="Vertical">
+                                        <StackPanel HorizontalAlignment="Center">
+                                                <TextBlock x:Name="MissionName" Padding="0,8,0,0"/>
+                                        </StackPanel>
+                                        <Image Height="300" Width="230" x:Name="MissionPicture"/>
+                                        <TextBlock x:Name="MissionDifficulty" Padding="1,2,1,1"/>
+                                        <TextBlock x:Name="MissionNumberOfDays" Padding="1,2,1,1"/>
+                                        <TextBlock x:Name="MissionState" Padding="1,2,1,1"/>
+                                        <TextBlock x:Name="MissionSoldierOnIt" Padding="1,2,1,1"/>
+                                        <TextBlock x:Name="MissionEarnings" Padding="1,2,1,1"/>
+                                        <TextBlock x:Name="MissionObjectsToReceive" Padding="1,2,1,1"/>
+                                        <Button Name="EnvoyerSoldat" Click="SendSoldierOnIt"/>
+                                </StackPanel>
+                                <Button Click="GoRightToMission" Content="→"  />
+                        </StackPanel>
+                </Border>
+                <StackPanel Margin="10,10,10,10" >
+                        <TextBlock Margin="10,10,10,10" Name="NumberOfMissions" FontSize="16" FontWeight="Bold"/>
+                        <TextBlock Margin="10,10,10,10" Name="NumberOfFreeMissions" FontSize="16" FontWeight="Bold"/>
+                        <TextBlock Margin="10,10,10,10" Name="NumberOfActiveMissions" FontSize="16" FontWeight="Bold"/>
+                        <TextBlock Margin="10,10,10,10" Name="NumberOfCompletedMissions" FontSize="16" FontWeight="Bold"/>
+                        <TextBlock Margin="10,10,10,10" Name="NumberOfFailedMissions" FontSize="16" FontWeight="Bold"/>
+                </StackPanel>
+        </StackPanel>
+</Window>

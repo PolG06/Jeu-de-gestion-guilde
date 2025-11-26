@@ -1,0 +1,58 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Pol_Guymarc_Projet.GoingEveningWindow"
+        Title="Pol_Guymarc_Projet"
+        WindowState="Maximized"
+        Opened="ShowUndesirableEvents"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Background>
+        <ImageBrush Source="avares://Pol_Guymarc_Projet/images/ObjectSelection.jpg" Stretch="UniformToFill"/>
+    </Window.Background>
+
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#2D2D3A"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="BorderBrush" Value="#444"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style Selector="TextBlock">
+            <Setter Property="Foreground" Value="white"/>
+            <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </Window.Styles>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Name="MainPanel" Margin="20" Spacing="20">
+            <TextBlock Name="EveningAnounce" Text="Vous arrivez au soir du jour n°"/>
+            <TextBlock Name="AllMissionsState" Text="Bilan de vos missions:"/>
+
+            <StackPanel Name="SuccedMissions" IsVisible="False" Spacing="5">
+                <TextBlock Text="Vos Missions réussies:"/>
+            </StackPanel>
+
+            <StackPanel Name="FailedMissions" IsVisible="False" Spacing="5">
+                <TextBlock Text="Vos Missions ratées:"/>
+            </StackPanel>
+
+            <StackPanel Name="InProgressMissions" IsVisible="False" Spacing="5">
+                <TextBlock Text="Vos Missions en cours:"/>
+            </StackPanel>
+
+            <Button Click="BackToMainMenu" Content="Ok"/>
+        </StackPanel>
+    </ScrollViewer>
+
+</Window>

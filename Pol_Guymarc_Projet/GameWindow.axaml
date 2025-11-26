@@ -1,0 +1,84 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Pol_Guymarc_Projet.GameWindow"
+        Title="Pol_Guymarc_Projet"
+        Opened="AtualizeDisplayGameWindow"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen">
+        
+        <Window.Background>
+                <ImageBrush Source="avares://Pol_Guymarc_Projet/images/Kingdom.jpg" Stretch="UniformToFill"/>
+        </Window.Background>
+
+        <Window.Styles>
+                <!-- 🎨 Style global sombre pour tous les boutons -->
+                <Style Selector="Button">
+                        <Setter Property="Background" Value="#2D2D3A"/>
+                        <Setter Property="Foreground" Value="#FFFFFF"/>
+                        <Setter Property="BorderBrush" Value="#444"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="CornerRadius" Value="8"/>
+                        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+                        <Setter Property="FontSize" Value="16"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Transitions">
+                                
+                        </Setter>
+                </Style>
+                <Style Selector="TextBlock">
+                        <Setter Property="Foreground" Value="white"/>
+                        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+                        <Setter Property="FontSize" Value="18"/>
+                </Style>
+        </Window.Styles>       
+                
+        <StackPanel >
+                <Grid VerticalAlignment="Top" Margin="10,10,10,0">
+                        <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/> <!-- Colonne gauche -->
+                                <ColumnDefinition Width="*" />   <!-- Espace extensible -->
+                                <ColumnDefinition Width="Auto"/> <!-- Colonne droite -->
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Bloc gauche -->
+                        <StackPanel Grid.Column="0">
+                                <TextBlock Name="DayCounter" />
+                                <TextBlock Name="DayMoment" />
+                                <TextBlock Name="MoneyCounter" Text="Argent: "/>   
+                                <TextBlock Name="BreadsCounter" Text="Nombre de pains en réserve: "/>  
+                                <TextBlock Name="MeatsCounter" Text="Nombre de viandes en réserve: "/>  
+                        </StackPanel>
+
+                        <!-- Bloc droite -->
+                        <StackPanel Grid.Column="2" HorizontalAlignment="Right">
+                                <TextBlock Name="NextDayMoneyCounter" Text="Pour le jour suivant, vous devrez avoir au minimum : "/>   
+                                <TextBlock Name="NextDayBreadsCounter" Text="Pour le jour suivant, vous devrez avoir au minimum "/>  
+                                <TextBlock Name="NextDayMeatsCounter" Text="Pour le jour suivant, vous devrez avoir au minimum "/>  
+                        </StackPanel>
+                </Grid>
+                <Grid HorizontalAlignment="Stretch" Margin="0,250,0,0">
+                        <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />       <!-- espace avant le premier bouton -->
+                                <ColumnDefinition Width="Auto"/>    <!-- Bouton 1 -->
+                                <ColumnDefinition Width="*" />       <!-- espace entre bouton 1 et 2 -->
+                                <ColumnDefinition Width="Auto"/>    <!-- Bouton 2 -->
+                                <ColumnDefinition Width="*" />       <!-- espace entre bouton 2 et 3 -->
+                                <ColumnDefinition Width="Auto"/>    <!-- Bouton 3 -->
+                                <ColumnDefinition Width="*" />       <!-- espace entre bouton 3 et 4 -->
+                                <ColumnDefinition Width="Auto"/>    <!-- Bouton 4 -->
+                                <ColumnDefinition Width="*" />       <!-- espace après le dernier bouton -->
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="1" Click="SeeSoldiers" Content="Voir mes Soldats"/>
+                        <Button Grid.Column="3" Click="SeeInventary" Content="Voir mes Objets"/>
+                        <Button Grid.Column="5" Click="SeeMissions" Content="Voir mes Missions"/>
+                        <Button Grid.Column="7" Click="GoToMerchant" Content="Aller Au Marchand"/>
+                </Grid>
+                <Button Click="SkipTheDayMoment" HorizontalAlignment="Center" Margin="0,220,0,0" Content="Passer le moment de la journée"/>
+        </StackPanel>
+</Window>

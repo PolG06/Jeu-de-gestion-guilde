@@ -1,0 +1,55 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Pol_Guymarc_Projet.MerchantSoldierWindow"
+        Title="Pol_Guymarc_Projet"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen">
+        
+        <Window.Background>
+                <ImageBrush Source="avares://Pol_Guymarc_Projet/images/SoldierSelection.png" Stretch="UniformToFill"/>
+        </Window.Background>
+        
+        <StackPanel Name="MainPanel">
+                <Button Click="BackToMainMerchant" Content="Retour"/>
+                <TextBlock Name="MoneyYouHave"/>
+                <TextBlock>Quel soldat souhaitez-vous acheter?</TextBlock>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Button Click="GoLeftToSoldier" Content="←" />
+
+                        <StackPanel x:Name="SeeSoldier" Orientation="Vertical">
+                                <TextBlock x:Name="SoldierName"/>
+                                <Image Height="300" Width="230" x:Name="SoldierPicture"/>
+                                <TextBlock x:Name="SoldierDescription"/>
+                                <TextBlock x:Name="SoldierDamages"/>
+                                <TextBlock x:Name="SoldierDiscretionPoints"/>
+                                <TextBlock x:Name="SoldierPv"/>
+                                <TextBlock x:Name="SoldierNumberOfBread"/>
+                                <TextBlock x:Name="SoldierNumberOfMeats"/>
+                                <TextBlock x:Name="SoldierSalaryADay"/>
+                                <TextBlock x:Name="SoldierBuyingPrice"/>
+                                <Button Name="BuySoldierButton" Content="Acheter" IsVisible="False" Click="ThenChooseName"/>
+                                <StackPanel Name="NewName" IsVisible="False">
+                                        <TextBlock>Quel va être son nom</TextBlock>
+                                        <TextBox Name="NewSoldierName"></TextBox>
+                                </StackPanel>
+                                
+                                <Button Name="Validation" Content="Valider" IsVisible="False" Click="CreateAndAddingNewSoldier">
+                                        <Button.Flyout>
+                                                <Flyout>
+                                                        <Border Background="#333" CornerRadius="5" Padding="10">
+                                                                <TextBlock Name="BuyingANewSoldier"
+                                                                           Foreground="White"/>
+                                                        </Border>
+                                                </Flyout>
+                                        </Button.Flyout>
+                                </Button>
+                        
+                        </StackPanel>
+                        <Button Click="GoRightToSoldier" Content="→"  />
+                </StackPanel>
+        </StackPanel>
+        
+</Window>

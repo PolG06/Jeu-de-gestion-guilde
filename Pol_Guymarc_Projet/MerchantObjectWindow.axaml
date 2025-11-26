@@ -1,0 +1,48 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Pol_Guymarc_Projet.MerchantObjectWindow"
+        Title="Pol_Guymarc_Projet"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen">
+        
+        <Window.Background>
+                <ImageBrush Source="avares://Pol_Guymarc_Projet/images/ObjectSelection.jpg" Stretch="UniformToFill"/>
+        </Window.Background>
+        
+        <StackPanel Name="MainPanel">
+                <Button Click="BackToMainMerchant" Content="Retour"/>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Button Name="GoLeft" Click="GoLeftToObject" Content="←" />
+                        <TextBlock Name="MoneyYouHave"/>
+                        <StackPanel x:Name="SeeObject" Orientation="Vertical">
+                                <TextBlock x:Name="ObjectName"/>
+                                <Image x:Name="ObjectPicture" Height="50" Width="40"/>
+                                <TextBlock x:Name="ObjectType"/>
+                                <TextBlock x:Name="ObjectDescription"/>
+                                <TextBlock x:Name="ObjectBuyingPrice"/>
+                                <TextBlock x:Name="ObjectSellingPrice"/>
+                                <TextBlock x:Name="ObjectOther"/>
+                                <TextBlock x:Name="ObjectQuantity"/>
+                                <Button Name="SelectingObject" Content="Acheter" Click="SelectingthisObject"/>
+                                <StackPanel Name="HowManyToBuy" IsVisible="false">
+                                        <TextBlock>Quantité que vous souhaitez acheter: </TextBlock>
+                                        <NumericUpDown Name="QuantityBuying" FormatString="0"></NumericUpDown>
+                                </StackPanel>
+                                <Button Name="BuyingObject" Content="Valider" Click="BuythisObject" IsVisible="false" >
+                                        <Button.Flyout>
+                                                <Flyout>
+                                                        <Border Background="#333" CornerRadius="5" Padding="10">
+                                                                <TextBlock Name="ValidateBuyingObject"
+                                                                           Foreground="White"/>
+                                                        </Border>
+                                                </Flyout>
+                                        </Button.Flyout>
+                                </Button>  
+                        </StackPanel> 
+                        <Button Name="GoRight" Click="GoRightToObject" Content="→" />
+                </StackPanel>
+        </StackPanel>
+</Window>

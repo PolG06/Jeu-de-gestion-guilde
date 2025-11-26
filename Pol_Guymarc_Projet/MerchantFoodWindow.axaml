@@ -1,0 +1,71 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Pol_Guymarc_Projet.MerchantFoodWindow"
+        Title="Pol_Guymarc_Projet"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Background>
+        <ImageBrush Source="avares://Pol_Guymarc_Projet/images/Merchant.jpg" Stretch="UniformToFill"/>
+    </Window.Background>
+
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#2D2D3A"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="BorderBrush" Value="#444"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style Selector="TextBlock">
+            <Setter Property="Foreground" Value="black"/>
+            <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </Window.Styles>
+
+    <StackPanel Name="MainPanel" Margin="10" Spacing="20">
+
+        <Button Click="BackToMainMerchant" Content="Retour" HorizontalAlignment="Left"/>
+
+        <StackPanel Spacing="10">
+            <TextBlock Name="AmountOfMoney"/>
+            <TextBlock Name="AmountOfBreads"/>
+            <TextBlock Name="AmountOfMeats"/>
+        </StackPanel>
+
+        <StackPanel Spacing="20">
+
+            <StackPanel Spacing="5">
+                <TextBlock Text="Combien voulez-vous de pains (3 pièces par unité)"/>
+                <NumericUpDown Name="NumberOfBreadsToBuy" FormatString="0"/>
+            </StackPanel>
+
+            <StackPanel Spacing="5">
+                <TextBlock Text="Combien voulez-vous de viandes (3 pièces par unité)"/>
+                <NumericUpDown Name="NumberOfMeatsToBuy" FormatString="0"/>
+            </StackPanel>
+
+        </StackPanel>
+
+        <Button Name="ValidateFoodBuyingButton" Click="ValidateBuyingFood" Content="Acheter">
+            <Button.Flyout>
+                <Flyout>
+                    <Border Background="#333" CornerRadius="5" Padding="10">
+                        <TextBlock Name="NotificationText" Foreground="White"/>
+                    </Border>
+                </Flyout>
+            </Button.Flyout>
+        </Button>
+
+    </StackPanel>
+</Window>

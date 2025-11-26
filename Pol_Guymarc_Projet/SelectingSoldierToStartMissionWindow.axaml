@@ -1,0 +1,50 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Pol_Guymarc_Projet.SelectingSoldierToStartMissionWindow"
+        Title="Pol_Guymarc_Projet"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen">
+        
+        <Window.Background>
+                <ImageBrush Source="avares://Pol_Guymarc_Projet/images/SoldierSelection.png" Stretch="UniformToFill"/>
+        </Window.Background>
+        
+        <StackPanel Name="MainPanel">
+                <Button Click="BackToMainMission" Content="Retour" Background="black"/>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="black">
+                        <Button Name = "GoLeft" Click="GoLeftToSoldier" Content="←" />
+                        <TextBlock Name="ErrorMessage"/>
+                        <StackPanel x:Name="SeeSoldier" Orientation="Vertical">
+                                <TextBlock x:Name="SoldierName"/>
+                                <TextBlock x:Name="SoldierLevel"/>
+                                <Image Height="300" Width="230" x:Name="SoldierPicture"/>
+                                <TextBlock x:Name="SoldierExp"/>
+                                <TextBlock x:Name="SoldierObjectPossessed"/>
+                                <TextBlock x:Name="SoldierSurvivingChances"></TextBlock>
+                                <TextBlock x:Name="SoldierPv"></TextBlock>
+                                <TextBlock x:Name="SoldierState"/>
+                                <TextBlock x:Name="SoldierFatigue"/>
+                                <TextBlock x:Name="SoldierDamages"/>
+                                <TextBlock x:Name="SoldierDiscretionPoints"/>
+                                <TextBlock x:Name="SoldierNumberOfBread"/>
+                                <TextBlock x:Name="SoldierNumberOfMeats"/>
+                                <TextBlock x:Name="SoldierSalaryADay"/>
+                                <Button Name="SoldierSendToMission" Content="Envoyer ce soldat en mission" Click="SendToMission">
+                                        <Button.Flyout>
+                                                <Flyout>
+                                                        <Border Background="#333" CornerRadius="5" Padding="10">
+                                                                <TextBlock Name="SoldierSendToMissionMessage"
+                                                                           Foreground="White"/>
+                                                        </Border>
+                                                </Flyout>
+                                        </Button.Flyout>
+                                </Button>
+                        </StackPanel>
+                        <Button Name = "GoRight" Click="GoRightToSoldier" Content="→"  />
+                </StackPanel>
+        </StackPanel>
+        
+</Window>
