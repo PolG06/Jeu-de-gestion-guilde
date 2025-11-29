@@ -847,7 +847,7 @@ public interface IMakingSuper
     }
     public class AmethystPerl : Objects
     {
-        public AmethystPerl() : base("Perle de d'amethyste", "Un objet rare venant de contrées lointaines", 100, 80,"AmethystPearl.png") { }
+        public AmethystPerl() : base("Perle d'amethyste", "Un objet rare venant de contrées lointaines", 100, 80,"AmethystPearl.png") { }
     }
     public class RedRubis : Objects
     {

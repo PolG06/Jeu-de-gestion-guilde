@@ -35,7 +35,7 @@
     </Window.Styles>
 
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-        <StackPanel Name="MainPanel" Margin="20" Spacing="20">
+        <StackPanel Name="MainPanel" Margin="50,20,20,0" Spacing="20">
             <TextBlock Name="AfternoonAnounce" Text="Vous arrivez à l'après midi du jour n°"/>
             <TextBlock Name="Informations"/>
 
@@ -54,7 +54,7 @@
                 <TextBlock Name="ThiefStolenObjectsText"/>
             </StackPanel>
 
-            <Button Click="BackToMainMenu" Content="Ok"/>
+            <Button Click="BackToMainMenu" Content="Ok" FontSize="20" Padding="20,6"/>
         </StackPanel>
     </ScrollViewer>
 

@@ -71,3 +71,4 @@ D:\Cours Sup De Vinci B2\C#\Pol_Guymarc_Projet_C#\Pol_Guymarc_Projet\Pol_Guymarc
 D:\Cours Sup De Vinci B2\C#\Pol_Guymarc_Projet_C#\Pol_Guymarc_Projet\Pol_Guymarc_Projet\obj\Debug\net9.0\Pol_Guymarc_Projet.pdb
 D:\Cours Sup De Vinci B2\C#\Pol_Guymarc_Projet_C#\Pol_Guymarc_Projet\Pol_Guymarc_Projet\obj\Debug\net9.0\Pol_Guymarc_Projet.genruntimeconfig.cache
 D:\Cours Sup De Vinci B2\C#\Pol_Guymarc_Projet_C#\Pol_Guymarc_Projet\Pol_Guymarc_Projet\obj\Debug\net9.0\ref\Pol_Guymarc_Projet.dll
+D:\Cours Sup De Vinci B2\C#\Pol_Guymarc_Projet_C#\Pol_Guymarc_Projet\Pol_Guymarc_Projet\obj\Debug\net9.0\Pol_Guymarc_Projet.sourcelink.json

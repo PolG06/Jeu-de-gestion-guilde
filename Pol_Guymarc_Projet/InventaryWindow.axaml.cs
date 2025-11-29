@@ -177,34 +177,34 @@ namespace Pol_Guymarc_Projet
 
         private async void SellQuantityOfObject(object? sender, RoutedEventArgs e)
         {
-            // Récupérer la quantité saisie, 0 si rien n'a été entré
+            bool achat_valide = false;
             int quantity = (int)(QuantityToSell.Value ?? 0);
 
             if (quantity > 0 && _guilde.GetObjectsDict()[_selectedObject] >= quantity)
             {
-                // Achat valide
+                achat_valide = true;
                 _guilde.SellObject(_selectedObject, quantity);
-                NotificationText.Text = "Vous venez de vendre "+quantity+" "+_selectedObject.GetName()+" pour "+_selectedObject.GetSellingPrice()*quantity+" pièces";
-                BackToMainMenu(sender, e);
+                NotificationText.Text = "Vous venez de vendre "+quantity+" "+_selectedObject.GetName()+"\npour "+_selectedObject.GetSellingPrice()*quantity+" pièces";
             }
             else if (quantity > 0 &&_guilde.GetObjectsDict()[_selectedObject] < quantity)
             {
                 
-                NotificationText.Text = "Vous ne pouvez vendre que "+quantity +" "+_selectedObject.GetName();
+                NotificationText.Text = "Vous ne pouvez vendre que "+_guilde.GetObjectsDict()[_selectedObject] +" "+_selectedObject.GetName();
             }
             else
             {
-                // Valeur invalide ou 0
                 NotificationText.Text = "Erreur, la valeur entrée n'est pas valide";
             }
-
-            // Afficher le flyout
+            
             var flyout = FlyoutBase.GetAttachedFlyout(ValidateAndSell);
             flyout?.ShowAt(ValidateAndSell);
-
-            // Attendre 2 secondes puis cacher le flyout
+            
             await Task.Delay(2000);
             flyout?.Hide();
+            if (achat_valide)
+            {
+                BackToMainMenu(sender, e);
+            }
         }
 
         private void GivingObjectToSoldier(object? sender, RoutedEventArgs e)

@@ -14,24 +14,25 @@
         
         <StackPanel Name="MainPanel">
                 <Button Click="BackToMainMenue" Content="Revenir au Menu Principal" Background="Black"/>
-                <Border Background="black" CornerRadius="10" Padding="10" Width="330">
-                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Black">
-                                <Button Click="GoLeftToMission" Content="←" />
-
-                                <StackPanel x:Name="SeeMission" Orientation="Vertical">
+                <Border Background="black" CornerRadius="10" Padding="10" Width="340">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Black" >
+                                <Button Click="GoLeftToMission" Content="←"/>
+                                <StackPanel x:Name="SeeMission" Orientation="Vertical" >
                                         <StackPanel HorizontalAlignment="Center">
-                                                <TextBlock x:Name="MissionName" Padding="0,8,0,0"/>
+                                                <TextBlock x:Name="MissionName" Padding="0,15,0,0" FontSize="18" FontWeight="Bold" />
                                         </StackPanel>
                                         <Image Height="300" Width="230" x:Name="MissionPicture"/>
-                                        <TextBlock x:Name="MissionDifficulty" Padding="1,2,1,1"/>
+                                        <TextBlock x:Name="MissionDifficulty" Padding="1,0,1,1"/>
                                         <TextBlock x:Name="MissionNumberOfDays" Padding="1,2,1,1"/>
                                         <TextBlock x:Name="MissionState" Padding="1,2,1,1"/>
                                         <TextBlock x:Name="MissionSoldierOnIt" Padding="1,2,1,1"/>
                                         <TextBlock x:Name="MissionEarnings" Padding="1,2,1,1"/>
-                                        <TextBlock x:Name="MissionObjectsToReceive" Padding="1,2,1,1"/>
-                                        <Button Name="EnvoyerSoldat" Click="SendSoldierOnIt"/>
+                                        <TextBlock x:Name="MissionObjectsToReceive" Padding="1,2,1,20"/>
+                                        <StackPanel HorizontalAlignment="Center">
+                                                <Button Name="EnvoyerSoldat" Click="SendSoldierOnIt"/>
+                                        </StackPanel>
                                 </StackPanel>
-                                <Button Click="GoRightToMission" Content="→"  />
+                                <Button Click="GoRightToMission" Content="→" />
                         </StackPanel>
                 </Border>
                 <StackPanel Margin="10,10,10,10" >

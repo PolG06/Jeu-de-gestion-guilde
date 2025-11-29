@@ -13,43 +13,49 @@
         </Window.Background>
         
         <StackPanel Name="MainPanel">
-                <Button Click="BackToMainMerchant" Content="Retour"/>
-                <TextBlock Name="MoneyYouHave"/>
-                <TextBlock>Quel soldat souhaitez-vous acheter?</TextBlock>
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button Click="GoLeftToSoldier" Content="←" />
-
-                        <StackPanel x:Name="SeeSoldier" Orientation="Vertical">
-                                <TextBlock x:Name="SoldierName"/>
-                                <Image Height="300" Width="230" x:Name="SoldierPicture"/>
-                                <TextBlock x:Name="SoldierDescription"/>
-                                <TextBlock x:Name="SoldierDamages"/>
-                                <TextBlock x:Name="SoldierDiscretionPoints"/>
-                                <TextBlock x:Name="SoldierPv"/>
-                                <TextBlock x:Name="SoldierNumberOfBread"/>
-                                <TextBlock x:Name="SoldierNumberOfMeats"/>
-                                <TextBlock x:Name="SoldierSalaryADay"/>
-                                <TextBlock x:Name="SoldierBuyingPrice"/>
-                                <Button Name="BuySoldierButton" Content="Acheter" IsVisible="False" Click="ThenChooseName"/>
-                                <StackPanel Name="NewName" IsVisible="False">
-                                        <TextBlock>Quel va être son nom</TextBlock>
-                                        <TextBox Name="NewSoldierName"></TextBox>
-                                </StackPanel>
-                                
-                                <Button Name="Validation" Content="Valider" IsVisible="False" Click="CreateAndAddingNewSoldier">
-                                        <Button.Flyout>
-                                                <Flyout>
-                                                        <Border Background="#333" CornerRadius="5" Padding="10">
-                                                                <TextBlock Name="BuyingANewSoldier"
-                                                                           Foreground="White"/>
-                                                        </Border>
-                                                </Flyout>
-                                        </Button.Flyout>
-                                </Button>
-                        
-                        </StackPanel>
-                        <Button Click="GoRightToSoldier" Content="→"  />
+                <Button Click="BackToMainMerchant" Content="Retour" Background="#2D2D3A" />
+                <TextBlock Foreground="black" FontSize="14" FontWeight="DemiBold" Name="MoneyYouHave"/>
+                <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Foreground="black" FontSize="20" FontFamily="Arial Black" FontWeight="Bold">Quel soldat souhaitez-vous acheter:</TextBlock>
                 </StackPanel>
+                <Border Background="black" CornerRadius="10" Padding="10" Width="700">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                                <Button Click="GoLeftToSoldier" Content="←" />
+                                <StackPanel x:Name="SeeSoldier" Orientation="Vertical">
+                                        <StackPanel HorizontalAlignment="Center">
+                                                <TextBlock x:Name="SoldierName" Padding="2"/>
+                                        </StackPanel>
+                                        <Image Height="300" Width="230" x:Name="SoldierPicture"/>
+                                        <TextBlock x:Name="SoldierDescription" Padding="2"/>
+                                        <TextBlock x:Name="SoldierDamages" Padding="2"/>
+                                        <TextBlock x:Name="SoldierDiscretionPoints" Padding="2"/>
+                                        <TextBlock x:Name="SoldierPv" Padding="2"/>
+                                        <TextBlock x:Name="SoldierNumberOfBread" Padding="2"/>
+                                        <TextBlock x:Name="SoldierNumberOfMeats" Padding="2"/>
+                                        <TextBlock x:Name="SoldierSalaryADay" Padding="2"/>
+                                        <TextBlock x:Name="SoldierBuyingPrice" Padding="2,2,2,10"/>
+                                        <StackPanel HorizontalAlignment="Center">
+                                                <Button Name="BuySoldierButton" Content="Acheter" IsVisible="False" Click="ThenChooseName"/>
+                                        </StackPanel>
+                                        <StackPanel Name="NewName" IsVisible="False">
+                                                <TextBlock>Quel va être son nom</TextBlock>
+                                                <TextBox Name="NewSoldierName"></TextBox>
+                                        </StackPanel>
+                                        <StackPanel HorizontalAlignment="Center">
+                                                <Button Name="Validation" Content="Valider" IsVisible="False" Click="CreateAndAddingNewSoldier">
+                                                        <Button.Flyout>
+                                                                <Flyout>
+                                                                        <Border Background="#333" CornerRadius="5" Padding="10">
+                                                                                <TextBlock Name="BuyingANewSoldier" Foreground="White"/>
+                                                                        </Border>
+                                                                </Flyout>
+                                                        </Button.Flyout>
+                                                </Button>
+                                        </StackPanel>
+                                </StackPanel>
+                                <Button Click="GoRightToSoldier" Content="→"  />
+                        </StackPanel>
+                </Border>
         </StackPanel>
         
 </Window>

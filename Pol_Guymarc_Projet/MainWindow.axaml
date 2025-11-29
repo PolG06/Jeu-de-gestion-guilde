@@ -9,11 +9,11 @@
         Title="Pol_Guymarc_Projet"
         WindowState="Maximized"
         WindowStartupLocation="CenterScreen">
-    <StackPanel Name="Starting_Page">
+    <StackPanel>
         <TextBlock  HorizontalAlignment="Center" FontSize="32"
                     Foreground="DarkRed"
                     FontFamily="Impact" Margin="0,25,0,10">Bienvenue Au Royaume d'Avalonia</TextBlock>
         <Image Source="avares://Pol_Guymarc_Projet/images/accueil.jpg"  Width="900" Height="600"/>
-        <TextBlock  HorizontalAlignment="Center" FontSize="20" Margin="0,0,0,10" >Cliquez n'importe où pour continuer</TextBlock>
+        <TextBlock  HorizontalAlignment="Center" FontSize="20" Margin="0,12,0,10" >Cliquez n'importe où pour continuer</TextBlock>
     </StackPanel>
 </Window>

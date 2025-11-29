@@ -14,10 +14,9 @@ namespace Pol_Guymarc_Projet
     {
         private static MerchantSoldierWindow? _instance;
         private Soldier? _selectedSoldier;
-        private List<Soldier>? soldierlist;
+        private List<Soldier>? _soldierlist;
         private readonly Guilde _guilde;
-
-        // Singleton : récupération de l'instance avec Guilde
+        
         public static MerchantSoldierWindow GetInstance(Guilde guilde)
         {
             if (_instance == null)
@@ -30,7 +29,6 @@ namespace Pol_Guymarc_Projet
         {
             return new MerchantSoldierWindow(guilde);
         }
-        // Constructeur privé
         private MerchantSoldierWindow(Guilde guilde)
         {
             _guilde = guilde;
@@ -40,23 +38,23 @@ namespace Pol_Guymarc_Projet
         protected override void OnOpened(EventArgs e)
         {
             base.OnOpened(e);
-            soldierlist = new List<Soldier>();
-            soldierlist.Add((new Bandit("Voleur")));
-            soldierlist.Add((new Archer("Archer")));
-            soldierlist.Add((new Giant("Géant")));
-            soldierlist.Add((new Swordsman("Epeiste")));
-            soldierlist.Add((new Paladin("Paladin")));
-            _selectedSoldier = soldierlist[0];
+            _soldierlist = new List<Soldier>();
+            _soldierlist.Add((new Bandit("Voleur")));
+            _soldierlist.Add((new Archer("Archer")));
+            _soldierlist.Add((new Giant("Géant")));
+            _soldierlist.Add((new Swordsman("Epeiste")));
+            _soldierlist.Add((new Paladin("Paladin")));
+            _selectedSoldier = _soldierlist[0];
             ShowSoldierInfos(_selectedSoldier);
-            
+            MoneyYouHave.Text = "Vous avez " + _guilde.GetMoney() + " pièces";
+
         }
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            _instance = null; // Permet de recréer plus tard
+            _instance = null;
         }
-
-        // Méthodes pour gérer les soldats
+        
         private void ShowSoldierInfos(Soldier soldier)
         {
             SoldierName.Text = soldier.GetName();
@@ -81,18 +79,19 @@ namespace Pol_Guymarc_Projet
         private void GoLeftToSoldier(object? sender, RoutedEventArgs e)
         {
             NewSoldierName.Text=String.Empty;
+            Validation.IsVisible = false;
             NewName.IsVisible = false;
-            if (_selectedSoldier == soldierlist[0])
+            if (_selectedSoldier == _soldierlist[0])
             {
-                _selectedSoldier = soldierlist[soldierlist.Count - 1];
+                _selectedSoldier = _soldierlist[_soldierlist.Count - 1];
             }
             else
             {
-                for (int i=0; i<soldierlist.Count; i++)
+                for (int i=0; i<_soldierlist.Count; i++)
                 {
-                    if (soldierlist[i] == _selectedSoldier)
+                    if (_soldierlist[i] == _selectedSoldier)
                     {
-                        _selectedSoldier=soldierlist[i-1];
+                        _selectedSoldier=_soldierlist[i-1];
                     }
                 }
             }
@@ -102,19 +101,20 @@ namespace Pol_Guymarc_Projet
         private void GoRightToSoldier(object? sender, RoutedEventArgs e)
         {
             NewSoldierName.Text=String.Empty;
+            Validation.IsVisible = false;
             NewName.IsVisible = false;
-            if (_selectedSoldier == soldierlist[soldierlist.Count -1])
+            if (_selectedSoldier == _soldierlist[_soldierlist.Count -1])
             {
-                _selectedSoldier = soldierlist[0];
+                _selectedSoldier = _soldierlist[0];
             }
             else
             {
-                for (int i=0; i<soldierlist.Count; i++)
+                for (int i=0; i<_soldierlist.Count; i++)
                 {
-                    if (soldierlist[i] == _selectedSoldier)
+                    if (_soldierlist[i] == _selectedSoldier)
                         
                     {
-                        _selectedSoldier=soldierlist[i+1];
+                        _selectedSoldier=_soldierlist[i+1];
                         break;
 
                     }
@@ -122,11 +122,9 @@ namespace Pol_Guymarc_Projet
             }
             ShowSoldierInfos(_selectedSoldier);
         }
-        private void BackToMainMenue()
+        private void BackToMainMenu()
         {
             var gameWindow = GameWindow.GetInstance(_guilde);
-
-            // Affiche la fenêtre principale
             gameWindow.Show();
             Close();
         }
@@ -160,17 +158,12 @@ namespace Pol_Guymarc_Projet
             }
             var flyout = FlyoutBase.GetAttachedFlyout(Validation);
             flyout?.ShowAt(Validation);
-
-            // Attendre 2 secondes puis cacher le flyout
+            
             await Task.Delay(2000);
             flyout?.Hide();
             if (exitAfter)
             {
-                // Réinitialiser le TextBox et cacher le panneau de saisie
-                //NewSoldierName.Text = string.Empty;
-                //NewName.IsVisible = false;
-                //Validation.IsVisible = false;
-                BackToMainMenue();
+                BackToMainMenu();
             }
         }
     }

@@ -36,7 +36,7 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
 
-        <StackPanel Name="MainPanel" Margin="20" Spacing="20">
+        <StackPanel Name="MainPanel" Margin="50,20,20,0" Spacing="20">
 
             <TextBlock Text="Aïe Vous avez perdu!"/>
             <TextBlock Text="Vous pouvez faire mieux!"/>
@@ -66,7 +66,7 @@
                 <TextBlock Name="SoldiersWeHave" Text="Tous vos soldats sont morts ou blessés."/>
             </StackPanel>
 
-            <Button Click="ExitTheGame" Content="Accepter la défaite"/>
+            <Button Click="ExitTheGame" Content="Accepter la défaite" FontSize="20" Padding="20,6"/>
 
         </StackPanel>
 

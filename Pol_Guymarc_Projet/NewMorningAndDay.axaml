@@ -65,7 +65,7 @@
                 <TextBlock Name="SoldiersWeHave" Text="Nombre de soldats que vous avez :"/>
             </StackPanel>
 
-            <Button Click="BackToMainMenu" Content="Ok"/>
+            <Button Click="BackToMainMenu" Content="Ok" FontSize="20" Padding="20,6"/>
 
         </StackPanel>
 

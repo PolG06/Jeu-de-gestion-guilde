@@ -10,32 +10,46 @@
         <Window.Background>
                 <ImageBrush Source="avares://Pol_Guymarc_Projet/images/ObjectSelection.jpg" Stretch="UniformToFill"/>
         </Window.Background>
+        <Window.Styles>
+                <Style Selector="Button">
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="CornerRadius" Value="8"/>
+                        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+                        <Setter Property="FontSize" Value="16"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                </Style>
+                <Style Selector="TextBlock">
+                        <Setter Property="FontSize" Value="18"/>
+                </Style>
+        </Window.Styles>
         
         <StackPanel Name="MainPanel">
                 <Button Click="BackToMainMenu" Content="Revenir au Menu Principal"/>
+                
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
                         <Button Name="GoLeft" Click="GoLeftToObject" Content="←" />
 
                         <StackPanel x:Name="SeeObject" Orientation="Vertical">
-                                <TextBlock x:Name="ObjectName"/>
-                                <Image x:Name="ObjectPicture" Height="50" Width="40"/>
-                                <TextBlock x:Name="ObjectType"/>
-                                <TextBlock x:Name="ObjectDescription"/>
-                                <TextBlock x:Name="ObjectBuyingPrice"/>
-                                <TextBlock x:Name="ObjectSellingPrice"/>
-                                <TextBlock x:Name="ObjectOther"/>
-                                <TextBlock x:Name="ObjectQuantity"/>
+                                <StackPanel HorizontalAlignment="Center">
+                                        <TextBlock x:Name="ObjectName" Padding="5,0,0,0"/>
+                                </StackPanel>
+                                <Image x:Name="ObjectPicture" Height="340" Width="280"/>
+                                <TextBlock x:Name="ObjectType" Padding="5"/>
+                                <TextBlock x:Name="ObjectDescription" Padding="5"/>
+                                <TextBlock x:Name="ObjectBuyingPrice" Padding="5"/>
+                                <TextBlock x:Name="ObjectSellingPrice" Padding="5"/>
+                                <TextBlock x:Name="ObjectOther" Padding="5"/>
+                                <TextBlock x:Name="ObjectQuantity" Padding="5,5,0,15"/>
                                 <Button Name="SellingObject" Content="Vendre cet objet" Click="SellThisObject"/>
                                 <StackPanel Name="ValidateSelling">
-                                        <TextBlock >Quelle quantité souhaitez-vous vendre</TextBlock>
+                                        <TextBlock >Quelle quantité souhaitez-vous vendre:</TextBlock>
                                         <NumericUpDown Name="QuantityToSell" FormatString="0"></NumericUpDown>
                                 </StackPanel>
                                 <Button Name="ValidateAndSell" Content="Valider" Click="SellQuantityOfObject">
                                         <Button.Flyout>
                                                 <Flyout>
-                                                        <Border Background="#333" CornerRadius="5" Padding="10">
-                                                                <TextBlock Name="NotificationText"
-                                                                           Foreground="White"/>
+                                                        <Border Background="#333" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="5" Padding="10" Height="65">
+                                                                <TextBlock Name="NotificationText" Foreground="White"/>
                                                         </Border>
                                                 </Flyout>
                                         </Button.Flyout>
@@ -45,7 +59,7 @@
                                                 <Flyout>
                                                         <Border Background="#333" CornerRadius="5" Padding="10">
                                                                 <TextBlock Name="NotificationTextGiving"
-                                                                           Foreground="White"/>
+                                                                                Foreground="White"/>
                                                         </Border>
                                                 </Flyout>
                                         </Button.Flyout>
