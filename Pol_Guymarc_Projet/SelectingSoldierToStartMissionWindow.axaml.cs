@@ -43,7 +43,7 @@ namespace Pol_Guymarc_Projet
             soldierList.RemoveAll(soldier => soldier.GetState() != "Libre");
             if (soldierList.Count == 0)
             {
-                _selectedSoldier = soldierList[0]=new Soldier();
+                _selectedSoldier =new Soldier();
             }
             else
             {
@@ -66,7 +66,7 @@ namespace Pol_Guymarc_Projet
                 SoldierSendToMission.IsVisible = false;
                 GoRight.IsVisible = false;
                 GoLeft.IsVisible = false;
-                ErrorMessage.Text = "Vous n'avez pas de soldat disponible à envoyer";
+                ErrorMessage.Text = "Vous n'avez pas de soldat disponible à envoyer en mission";
                 SeeSoldier.IsVisible = false;
             }
             else

@@ -14,37 +14,43 @@
         
         <StackPanel Name="MainPanel">
                 <Button Click="BackToMainMission" Content="Retour" Background="black"/>
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="black">
-                        <Button Name = "GoLeft" Click="GoLeftToSoldier" Content="←" />
-                        <TextBlock Name="ErrorMessage"/>
-                        <StackPanel x:Name="SeeSoldier" Orientation="Vertical">
-                                <TextBlock x:Name="SoldierName"/>
-                                <TextBlock x:Name="SoldierLevel"/>
-                                <Image Height="300" Width="230" x:Name="SoldierPicture"/>
-                                <TextBlock x:Name="SoldierExp"/>
-                                <TextBlock x:Name="SoldierObjectPossessed"/>
-                                <TextBlock x:Name="SoldierSurvivingChances"></TextBlock>
-                                <TextBlock x:Name="SoldierPv"></TextBlock>
-                                <TextBlock x:Name="SoldierState"/>
-                                <TextBlock x:Name="SoldierFatigue"/>
-                                <TextBlock x:Name="SoldierDamages"/>
-                                <TextBlock x:Name="SoldierDiscretionPoints"/>
-                                <TextBlock x:Name="SoldierNumberOfBread"/>
-                                <TextBlock x:Name="SoldierNumberOfMeats"/>
-                                <TextBlock x:Name="SoldierSalaryADay"/>
-                                <Button Name="SoldierSendToMission" Content="Envoyer ce soldat en mission" Click="SendToMission">
-                                        <Button.Flyout>
-                                                <Flyout>
-                                                        <Border Background="#333" CornerRadius="5" Padding="10">
-                                                                <TextBlock Name="SoldierSendToMissionMessage"
-                                                                           Foreground="White"/>
-                                                        </Border>
-                                                </Flyout>
-                                        </Button.Flyout>
-                                </Button>
+                <Border Background="black" CornerRadius="10" Padding="10" Width="420">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                                <Button Name = "GoLeft" Click="GoLeftToSoldier" Content="←" />
+                                <TextBlock Name="ErrorMessage"/>
+                                <StackPanel x:Name="SeeSoldier" Orientation="Vertical" Background="black">
+                                        <StackPanel HorizontalAlignment="Center">
+                                                <TextBlock x:Name="SoldierName" Padding="2" FontSize="20" FontWeight="Bold"/>
+                                        </StackPanel>
+                                        <Image Height="300" Width="230" x:Name="SoldierPicture"/>
+                                        <TextBlock x:Name="SoldierLevel" Padding="2"/>
+                                        <TextBlock x:Name="SoldierExp" Padding="2"/>
+                                        <TextBlock x:Name="SoldierObjectPossessed" Padding="2"/>
+                                        <TextBlock x:Name="SoldierSurvivingChances" Padding="2"/>
+                                        <TextBlock x:Name="SoldierPv" Padding="2"/>
+                                        <TextBlock x:Name="SoldierState" Padding="2"/>
+                                        <TextBlock x:Name="SoldierFatigue" Padding="2"/>
+                                        <TextBlock x:Name="SoldierDamages" Padding="2"/>
+                                        <TextBlock x:Name="SoldierDiscretionPoints" Padding="2"/>
+                                        <TextBlock x:Name="SoldierNumberOfBread" Padding="2"/>
+                                        <TextBlock x:Name="SoldierNumberOfMeats" Padding="2"/>
+                                        <TextBlock x:Name="SoldierSalaryADay" Padding="2,2,2,10"/>
+                                        <StackPanel HorizontalAlignment="Center">
+                                                <Button Name="SoldierSendToMission" Content="Envoyer ce soldat en mission" Click="SendToMission">
+                                                        <Button.Flyout>
+                                                                <Flyout>
+                                                                        <Border Background="#333" CornerRadius="5" Padding="10">
+                                                                                <TextBlock Name="SoldierSendToMissionMessage"
+                                                                                        Foreground="White"/>
+                                                                        </Border>
+                                                                </Flyout>
+                                                        </Button.Flyout>
+                                                </Button>
+                                        </StackPanel>
+                                </StackPanel>
+                                <Button Name = "GoRight" Click="GoRightToSoldier" Content="→"  />
                         </StackPanel>
-                        <Button Name = "GoRight" Click="GoRightToSoldier" Content="→"  />
-                </StackPanel>
+                </Border>
         </StackPanel>
         
 </Window>

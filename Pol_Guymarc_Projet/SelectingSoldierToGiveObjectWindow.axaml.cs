@@ -43,7 +43,7 @@ namespace Pol_Guymarc_Projet
             soldierList = _guilde.WhoCanReceiveObject(_selectedobject).ToList();
             if (soldierList.Count == 0)
             {
-                _selectedSoldier = soldierList[0]=new Soldier();
+                _selectedSoldier =new Soldier();
             }
             else
             {
@@ -55,10 +55,9 @@ namespace Pol_Guymarc_Projet
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            _instance = null; // Permet de recréer plus tard
+            _instance = null;
         }
-
-        // Méthodes pour gérer les soldats
+        
         private void ShowSoldierInfos(Soldier soldier)
         {
             if (soldier.GetDescription() == "Inconnue")
@@ -66,7 +65,7 @@ namespace Pol_Guymarc_Projet
                 GivingObjectToSoldier.IsVisible = false;
                 GoRight.IsVisible = false;
                 GoLeft.IsVisible = false;
-                ErrorMessage.Text = "Vous n'avez pas de soldat disponible à envoyer";
+                ErrorMessage.Text = "Vous n'avez pas de soldat à qui donner cet equipement";
                 SeeSoldier.IsVisible = false;
             }
             else
@@ -185,8 +184,6 @@ namespace Pol_Guymarc_Projet
         private void BackToMainMenu()
         {
             var gameWindow = GameWindow.GetInstance(_guilde);
-
-            // Affiche la fenêtre principale
             gameWindow.Show();
             Close();
         }
@@ -245,8 +242,7 @@ namespace Pol_Guymarc_Projet
                                                
             var flyout = FlyoutBase.GetAttachedFlyout(GivingObjectToSoldier);
             flyout?.ShowAt(GivingObjectToSoldier);
-            // Attendre 2 secondes puis cacher le flyout
-            await Task.Delay(2000);
+            await Task.Delay(4000);
             flyout?.Hide();
             _guilde.GiveObjectToSoldier(_selectedobject, _selectedSoldier);
             BackToMainMenu();

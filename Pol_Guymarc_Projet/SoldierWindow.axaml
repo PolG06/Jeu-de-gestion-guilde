@@ -19,7 +19,6 @@
                 <Border Background="black" CornerRadius="10" Padding="10" Width="700">
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" >
                                 <Button Click="GoLeftToSoldier" Content="←" />
-                                
                                 <StackPanel x:Name="SeeSoldier" Orientation="Vertical" Background="black"  >
                                         <StackPanel HorizontalAlignment="Center">
                                                 <TextBlock x:Name="SoldierName" Padding="2" FontSize="20" FontWeight="Bold"/>

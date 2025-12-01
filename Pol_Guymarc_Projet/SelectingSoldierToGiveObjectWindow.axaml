@@ -14,37 +14,42 @@
         
         <StackPanel Name="MainPanel">
                 <Button Click="BackToMainObjects" Content="Retour" Background="black"/>
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button Name = "GoLeft" Click="GoLeftToSoldier" Content="←"/>
-                        <TextBlock Name="ErrorMessage"/>
-                        <TextBlock>A quel soldat souhaitez-vous donner l'objet? </TextBlock>
-                        <StackPanel x:Name="SeeSoldier" Orientation="Vertical" Background="black">
-                                <TextBlock x:Name="SoldierName"/>
-                                <TextBlock x:Name="SoldierLevel"/>
-                                <Image Height="300" Width="230" x:Name="SoldierPicture"/>
-                                <TextBlock x:Name="SoldierExp"/>
-                                <TextBlock x:Name="SoldierObjectPossessed"/>
-                                <TextBlock x:Name="SoldierPv"></TextBlock>
-                                <TextBlock x:Name="SoldierState"/>
-                                <TextBlock x:Name="SoldierFatigue"/>
-                                <TextBlock x:Name="SoldierDamages"/>
-                                <TextBlock x:Name="SoldierDiscretionPoints"/>
-                                <TextBlock x:Name="SoldierNumberOfBread"/>
-                                <TextBlock x:Name="SoldierNumberOfMeats"/>
-                                <TextBlock x:Name="SoldierSalaryADay"/>
-                                <Button Name="GivingObjectToSoldier" Content="Donner" Click="GiveObject">
-                                        <Button.Flyout>
-                                                <Flyout>
-                                                        <Border Background="#333" CornerRadius="5" Padding="10">
-                                                                <TextBlock Name="ObjectGivenToSoldier"
-                                                                           Foreground="White"/>
-                                                        </Border>
-                                                </Flyout>
-                                        </Button.Flyout>
-                                </Button>
+                <Border Background="black" CornerRadius="10" Padding="10" Width="440">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                                <Button Name = "GoLeft" Click="GoLeftToSoldier" Content="←"/>
+                                <TextBlock Name="ErrorMessage"/>
+                                <StackPanel x:Name="SeeSoldier" Orientation="Vertical" Background="black">
+                                        <TextBlock Padding="0,15" FontSize="16" FontWeight="Bold">A quel soldat souhaitez-vous donner l'objet? </TextBlock>
+                                        <StackPanel HorizontalAlignment="Center">
+                                                <TextBlock x:Name="SoldierName" Padding="2" FontSize="20" FontWeight="Bold"/>
+                                        </StackPanel>
+                                        <TextBlock x:Name="SoldierLevel" Padding="3"/>
+                                        <Image Height="300" Width="230" x:Name="SoldierPicture"/>
+                                        <TextBlock x:Name="SoldierExp" Padding="3"/>
+                                        <TextBlock x:Name="SoldierObjectPossessed" Padding="3"/>
+                                        <TextBlock x:Name="SoldierPv" Padding="3"/>
+                                        <TextBlock x:Name="SoldierState" Padding="3"/>
+                                        <TextBlock x:Name="SoldierFatigue" Padding="3"/>
+                                        <TextBlock x:Name="SoldierDamages" Padding="3"/>
+                                        <TextBlock x:Name="SoldierDiscretionPoints" Padding="3"/>
+                                        <TextBlock x:Name="SoldierNumberOfBread" Padding="3"/>
+                                        <TextBlock x:Name="SoldierNumberOfMeats" Padding="3"/>
+                                        <TextBlock x:Name="SoldierSalaryADay" Padding="3,2,2,15"/>
+                                        <StackPanel HorizontalAlignment="Center">
+                                                <Button Name="GivingObjectToSoldier" Content="Donner" Click="GiveObject">
+                                                        <Button.Flyout>
+                                                                <Flyout>
+                                                                        <Border Background="#333" CornerRadius="5" Padding="10">
+                                                                                <TextBlock Name="ObjectGivenToSoldier"
+                                                                                        Foreground="White"/>
+                                                                        </Border>
+                                                                </Flyout>
+                                                        </Button.Flyout>
+                                                </Button>
+                                        </StackPanel>
+                                </StackPanel>
+                                <Button Name = "GoRight" Click="GoRightToSoldier" Content="→"  />
                         </StackPanel>
-                        <Button Name = "GoRight" Click="GoRightToSoldier" Content="→"  />
-                </StackPanel>
+                </Border>
         </StackPanel>
-        
 </Window>

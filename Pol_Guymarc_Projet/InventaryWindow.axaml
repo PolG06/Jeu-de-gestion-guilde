@@ -28,7 +28,6 @@
                 
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
                         <Button Name="GoLeft" Click="GoLeftToObject" Content="←" />
-
                         <StackPanel x:Name="SeeObject" Orientation="Vertical">
                                 <StackPanel HorizontalAlignment="Center">
                                         <TextBlock x:Name="ObjectName" Padding="5,0,0,0"/>

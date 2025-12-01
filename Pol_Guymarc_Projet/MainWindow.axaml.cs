@@ -54,7 +54,7 @@ public partial class MainWindow : Window
 
     private void MainWindow_PointerPressed(object? sender, PointerPressedEventArgs e)
     {
-        var gameWindow = GameWindow.GetInstance(guilde); // on passe l'instance existante
+        var gameWindow = GameWindow.GetInstance(guilde); 
         gameWindow.Show();
         Close();
     }

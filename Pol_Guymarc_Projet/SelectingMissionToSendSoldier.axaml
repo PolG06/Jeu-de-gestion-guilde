@@ -13,32 +13,38 @@
         </Window.Background>
 
         <StackPanel Name="MainPanel">
-                <Button Click="BackToMainSoldier" Content="Retour"/>
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button Name="GoLeft" Click="GoLeftToMission" Content="←" IsVisible="True"/>
+                <Button Click="BackToMainSoldier" Content="Retour" Background="Black"/>
+                <Border Background="black" CornerRadius="10" Padding="10" Width="370">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Black">
+                                <Button Name="GoLeft" Click="GoLeftToMission" Content="←" IsVisible="True"/>
 
-                        <StackPanel x:Name="SeeMission" Orientation="Vertical">
-                                <TextBlock x:Name="MissionName"/>
-                                <Image Height="300" Width="230" x:Name="MissionPicture"/>
-                                <TextBlock x:Name="MissionDifficulty"/>
-                                <TextBlock x:Name="MissionNumberOfDays"/>
-                                <TextBlock x:Name="MissionSurvivingChance"/>
-                                <TextBlock x:Name="MissionState"/>
-                                <TextBlock x:Name="MissionEarnings"/>
-                                <TextBlock x:Name="MissionObjectsToReceive"/>
-                                <Button Click="ValidateSendingToMission" Name="StartMission" Content="Débuter la mission" IsVisible="True">
-                                        <Button.Flyout>
-                                                <Flyout>
-                                                        <Border Background="#333" CornerRadius="5" Padding="10">
-                                                                <TextBlock Name="ValidatingSendingSoldierToMission"
-                                                                           Foreground="White"/>
-                                                        </Border>
-                                                </Flyout>
-                                        </Button.Flyout>
-                                </Button>
+                                <StackPanel x:Name="SeeMission" Orientation="Vertical">
+                                        <StackPanel HorizontalAlignment="Center">
+                                                <TextBlock x:Name="MissionName" Padding="0,15,0,0" FontSize="18" FontWeight="Bold"/>
+                                        </StackPanel>
+                                        <Image Height="300" Width="230" x:Name="MissionPicture"/>
+                                        <TextBlock x:Name="MissionDifficulty" Padding="1,0,1,1"/>
+                                        <TextBlock x:Name="MissionNumberOfDays" Padding="1,0,1,1"/>
+                                        <TextBlock x:Name="MissionSurvivingChance" Padding="1,0,1,1"/>
+                                        <TextBlock x:Name="MissionState" Padding="1,0,1,1"/>
+                                        <TextBlock x:Name="MissionEarnings" Padding="1,0,1,1"/>
+                                        <TextBlock x:Name="MissionObjectsToReceive" Padding="1,0,1,15"/>
+                                        <StackPanel HorizontalAlignment="Center">
+                                                <Button Click="ValidateSendingToMission" Name="StartMission" Content="Débuter la mission" IsVisible="True">
+                                                <Button.Flyout>
+                                                        <Flyout>
+                                                                <Border Background="#333" CornerRadius="5" Padding="10">
+                                                                        <TextBlock Name="ValidatingSendingSoldierToMission"
+                                                                                        Foreground="White"/>
+                                                                </Border>
+                                                        </Flyout>
+                                                </Button.Flyout>
+                                                </Button>
+                                        </StackPanel>
+                                </StackPanel>
+                                <Button Name="GoRight" Click="GoRightToMission" Content="→" IsVisible="True" />
                         </StackPanel>
-                        <Button Name="GoRight" Click="GoRightToMission" Content="→" IsVisible="True" />
-                </StackPanel>
+                </Border>
         </StackPanel>
 </Window>
                 
