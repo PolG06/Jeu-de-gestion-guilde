@@ -67,12 +67,11 @@ namespace Pol_Guymarc_Projet
             }
             else if (soldier.GetState() == "Au repos")
             {
-                SoldierGiveObject.IsVisible = false;
+                SoldierSendToMission.IsVisible = false;
             }
             else if(soldier.GetState()=="Blessé")
             {
-                SoldierGiveObject.IsVisible = false;
-                SoldierGoSleep.IsVisible = false;
+                SoldierSendToMission.IsVisible = false;
             }
             else if (soldier.GetState() == "Mort")
             {
@@ -166,7 +165,7 @@ namespace Pol_Guymarc_Projet
             var flyout = FlyoutBase.GetAttachedFlyout(SoldierGoSleep);
             flyout?.ShowAt(SoldierGoSleep);
 
-            // Attendre 2 secondes puis cacher le flyout
+           
             await Task.Delay(2000);
             flyout?.Hide();
         }

@@ -60,7 +60,7 @@ namespace Pol_Guymarc_Projet
         {
             var gameWindow = GameWindow.GetInstance(_guilde);
             
-            // Affiche la fenêtre principale
+            
             gameWindow.Show();
             Close();
         }

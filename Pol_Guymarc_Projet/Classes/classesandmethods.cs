@@ -942,7 +942,7 @@ public interface IMakingSuper
             {
                 soldier.SetFatigue(100);
             }
-            if (soldier.GetFatigue()>=randomValue2)
+            if (soldier.GetFatigue()/100>=randomValue2)
             {
                 soldier.SeBlesser();
             }

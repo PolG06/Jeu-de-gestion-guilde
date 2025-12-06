@@ -111,7 +111,7 @@ namespace Pol_Guymarc_Projet
                     else 
                     {
                         txt.Text = "- "+mission.GetSoldierOnIt().GetName()+" est en encore sur la mission n° "+mission.GetId();
-                        txt.Text = " \nIl reste "+mission.getNumberOfDaysLeft()+" jours avant qu'elle soit terminée";
+                        txt.Text += " \nIl reste "+(-mission.getNumberOfDaysLeft())+" jours avant qu'elle soit terminée";
                         InProgressMissions.Children.Add(txt);
                         InProgressMissions.IsVisible = true;
                     }

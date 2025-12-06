@@ -26,8 +26,6 @@ namespace Pol_Guymarc_Projet
         {
             return new YouLooseWindow(guilde);
         }
-
-        // Constructeur privé
         private YouLooseWindow(Guilde guilde)
         {
             _guilde = guilde;
@@ -40,23 +38,23 @@ namespace Pol_Guymarc_Projet
                 _guilde.CalculateTodaysNumberOfMeatsDistributedToSoldiers() < 0)
             {
                 NotEnoughMeats.IsVisible = true;
-                MeatsWeHave.Text +=  _guilde.GetNumberOfMeats();
-                MeatsComing.Text += _guilde.GetnumberOfMeatsComingTomorrow();
-                MeatsWeOwedSoldiers.Text += _guilde.CalculateTodaysNumberOfMeatsDistributedToSoldiers();
+                MeatsWeHave.Text +=" "+  _guilde.GetNumberOfMeats();
+                MeatsComing.Text +=" "+ _guilde.GetnumberOfMeatsComingTomorrow();
+                MeatsWeOwedSoldiers.Text +=" "+ _guilde.CalculateTodaysNumberOfMeatsDistributedToSoldiers();
             }
             if (_guilde.GetNumberOfBreads() + _guilde.GetnumberOfBreadsComingTomorrow() -
                 _guilde.CalculateTodaysNumberOfBreadsDistributedToSoldiers() < 0)
             {
                 NotEnoughBreads.IsVisible = true;
-                BreadsWeHave.Text +=  _guilde.GetNumberOfBreads();
-                BreadsComing.Text += _guilde.GetnumberOfBreadsComingTomorrow();
-                BreadsWeOwedSoldiers.Text += _guilde.CalculateTodaysNumberOfBreadsDistributedToSoldiers();
+                BreadsWeHave.Text +=" "+  _guilde.GetNumberOfBreads();
+                BreadsComing.Text +=" "+ _guilde.GetnumberOfBreadsComingTomorrow();
+                BreadsWeOwedSoldiers.Text +=" "+ _guilde.CalculateTodaysNumberOfBreadsDistributedToSoldiers();
             }
             if (_guilde.GetMoney() - _guilde.CalculateTodaysMoneyDistributedToSoldiers() < 0)
             {
                 NotEnoughMoney.IsVisible = true;
-                MoneyWeHave.Text+=_guilde.GetMoney()+" pièces";
-                MoneyWeOwedSoldiers.Text+=_guilde.CalculateTodaysMoneyDistributedToSoldiers()+" pièces";
+                MoneyWeHave.Text+=" "+_guilde.GetMoney()+" pièces";
+                MoneyWeOwedSoldiers.Text+=" "+_guilde.CalculateTodaysMoneyDistributedToSoldiers()+" pièces";
             }
             int counterOfSoldiersAbleToFight = 0;
             foreach (Soldier soldier in _guilde.GetSoldiersList())

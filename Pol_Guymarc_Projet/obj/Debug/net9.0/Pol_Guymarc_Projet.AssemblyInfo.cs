@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Pol_Guymarc_Projet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+05ecd9b5ccaede5c6aa008270321604b6b563eeb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5381a879aa8c54174f5758eec1eef8cf10ace51a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Pol_Guymarc_Projet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Pol_Guymarc_Projet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
