@@ -456,23 +456,23 @@ public class Guilde
 
         foreach (Soldier soldier in SoldiersList)
         {
-            if ((_militaryEquipement.getTypeCompatibleHero() == "Voleur") && (soldier is Bandit) && (soldier.GetObject()!=_militaryEquipement))
+            if ((_militaryEquipement.getTypeCompatibleSoldier() == "Voleur") && (soldier is Bandit) && (soldier.GetObject()!=_militaryEquipement))
             {
                 authorisedSolidersList.Add(soldier);
             }
-            else if ((_militaryEquipement.getTypeCompatibleHero() == "Géant") && (soldier is Giant)&& (soldier.GetObject()!=_militaryEquipement))
+            else if ((_militaryEquipement.getTypeCompatibleSoldier() == "Géant") && (soldier is Giant)&& (soldier.GetObject()!=_militaryEquipement))
             {
                 authorisedSolidersList.Add(soldier);
             }
-            else if ((_militaryEquipement.getTypeCompatibleHero() == "Epéiste") && (soldier is Swordsman)&& (soldier.GetObject()!=_militaryEquipement))
+            else if ((_militaryEquipement.getTypeCompatibleSoldier() == "Epéiste") && (soldier is Swordsman)&& (soldier.GetObject()!=_militaryEquipement))
             {
                 authorisedSolidersList.Add(soldier);
             }
-            else if ((_militaryEquipement.getTypeCompatibleHero() == "Archer") && (soldier is Archer)&& (soldier.GetObject()!=_militaryEquipement))
+            else if ((_militaryEquipement.getTypeCompatibleSoldier() == "Archer") && (soldier is Archer)&& (soldier.GetObject()!=_militaryEquipement))
             {
                 authorisedSolidersList.Add(soldier);
             }
-            else if ((_militaryEquipement.getTypeCompatibleHero() == "Paladin") && (soldier is Paladin)&& (soldier.GetObject()!=_militaryEquipement))
+            else if ((_militaryEquipement.getTypeCompatibleSoldier() == "Paladin") && (soldier is Paladin)&& (soldier.GetObject()!=_militaryEquipement))
             {
                 authorisedSolidersList.Add(soldier);
             }
@@ -885,6 +885,7 @@ public class Objects
             sellingPrice = _sellingPrice;
             pictureName = _pictureName;
         }
+        //constructeur de la classe Objects que l'on va utiliser pour créer des objets par défaut
         public Objects()
         {
             name = "Aucun";
@@ -894,110 +895,148 @@ public class Objects
             pictureName = "Aucune";
         }
         public String GetName()
+        //getter pour le nom de l'objet
         {
             return name;
         }
         public String GetDescription()
+        //getter pour la description de l'objet
         {
             return description;
         }
         public int GetBuyingPrice()
+        //getter pour le prix de l'objet
         {
             return buyingPrice;
         }
 
         public String GetImageName()
+        //getter pour le nom de l'image de l'objet pour l'afficher par la suite
         {
             return pictureName;
         }
         public int GetSellingPrice()
+        //getter pour le prix de vente de l'objet
         {
             return sellingPrice;
         }
     }
-    public class Potion : Objects
+public class Potion : Objects
+//classe Potion qui hérite de Objects
     {
         private int pvHealed;
-
+        //constructeur qui fait appel à celui de la classe Objects
         public Potion(String name, String _description, int buyingPrice, int sellingPrice, int _pvHealed, String _pictureName) : base(name, _description, buyingPrice, sellingPrice, _pictureName)
         {
             pvHealed = _pvHealed;
         }
         public int getPvHealed()
+        //getter pour récupérer les pvs que la potion peut soigner 
         {
             return pvHealed;
         }
     }
 
-    public class MilitaryEquipement : Objects
+public class MilitaryEquipement : Objects
+//classe MilitaryEquipement qui hérite de Objects
     {
+        //chaque equipement militaire convient à un type de soldat, un soldat ne peux recevoir qu'un seul equipement militaire bien précis 
         private String typeHeroCompatible;
-
+        //Constructeur de la classe qui fait appel à celui de la classe Objects
         public MilitaryEquipement(String name, String _description, int buyingPrice, int sellingPrice, String _typeHeroCompatible, String _pictureName) : base(name, _description, buyingPrice, sellingPrice, _pictureName)
         {
             typeHeroCompatible = _typeHeroCompatible;
         }
-        public String getTypeCompatibleHero()
+        public String getTypeCompatibleSoldier()
+        //getter pour récuperer le type de soldat compatible
         {
             return typeHeroCompatible;
         }
     }
-    public class Recovery : Objects
+public class Recovery : Objects
+//classe Recovery qui hérite de Objects
     {
+        //Constructeur de la classe qui fait appel à celui de la classe Objects
         public Recovery() : base("Sort de Guerison", "A le pouvoir de soigner toute blessure", 20, 15,"Recovery.png") { }
     }
-    public class AmethystPerl : Objects
+public class AmethystPerl : Objects
+//classe AmethystPerl qui hérite de Objects
     {
+        //Constructeur de la classe qui fait appel à celui de la classe Objects
         public AmethystPerl() : base("Perle d'amethyste", "Un objet rare venant de contrées lointaines", 100, 80,"AmethystPearl.png") { }
     }
-    public class RedRubis : Objects
+public class RedRubis : Objects
+//classe RedRubis qui hérite de Objects
     {
+        //Constructeur de la classe qui fait appel à celui de la classe Objects
         public RedRubis() : base("Rubis rouge", "Un joyau provenant d'une ancienne famille noble", 150, 140,"redRubis.png") { }
     }
-    public class RoyalNeckLace : Objects
+public class RoyalNeckLace : Objects
+//classe RoyalNeckLace qui hérite de Objects
     {
+        //Constructeur de la classe qui fait appel à celui de la classe Objects
         public RoyalNeckLace() : base("Collier royal", "Un objectPossessed très précieux tout droit venu de l'ancien Royaume", 500, 340,"RoyalNeckLace.png") { }
     }
-    public class GoldBar : Objects
+public class GoldBar : Objects
+//classe GoldBar qui hérite de Objects
     {
+        //Constructeur de la classe qui fait appel à celui de la classe Objects
         public GoldBar() : base("Lingot d'or", "Ce lingo provient surement d'une mine de l'autre coté de la rivière", 15, 10,"goldBar.jpg") { }
     }
-    public class LittlePotion : Potion
+public class LittlePotion : Potion
+//classe LittlePotion qui hérite de Potion
     {
+        //Constructeur de la classe qui fait appel à celui de la classe Potion
         public LittlePotion() : base("Petite Potion", "Permet de soigner 25 PV", 10, 8, 50,"littlepotion.png") { }
     }
-    public class MediumPotion : Potion
+public class MediumPotion : Potion
+//classe MediumPotion qui hérite de Potion
     {
+        //Constructeur de la classe qui fait appel à celui de la classe Potion
         public MediumPotion() : base("Moyenne Potion", "Permet de soigner 50 PV", 15, 13, 100,"mediumpotion.png") { }
     }
-    public class BigPotion : Potion
+public class BigPotion : Potion
+//classe BigPotion qui hérite de Potion
     {
+        //Constructeur de la classe qui fait appel à celui de la classe Potion
         public BigPotion() : base("Grande Potion", "Permet de soigner 100 PV", 20, 18, 175,"bigPotion.png") { }
     }
-    public class LightCape : MilitaryEquipement
+public class LightCape : MilitaryEquipement
+//classe LightCape qui hérite de MilitaryEquipement
     {
+        //Constructeur de la classe qui fait appel à celui de la classe MilitaryEquipement
         public LightCape() : base("Cape légère", "Peremttra à votre voleuse d'être encore plus furtive", 60, 45, "Voleur","lightcape.png") { }
     }
-    public class MetalFists : MilitaryEquipement
+public class MetalFists : MilitaryEquipement
+//classe MetalFists qui hérite de MilitaryEquipement
     {
+        //Constructeur de la classe qui fait appel à celui de la classe MilitaryEquipement
         public MetalFists() : base("Poings en Métal", "Peremttra à votre Géant de mettre des coups de points toujours plus redoutables", 100, 95, "Géant","metalFists.jpg") { }
     }
-    public class SoulSword : MilitaryEquipement
+public class SoulSword : MilitaryEquipement
+//classe SoulSword qui hérite de MilitaryEquipement
     {
+        //Constructeur de la classe qui fait appel à celui de la classe MilitaryEquipement
         public SoulSword() : base("Epee de l'âme", "Avec cela, votre épéiste pourra même trancher l'air", 100, 95, "Epéiste", "soulSword.png") { }
     }
-    public class OverPowerdBow : MilitaryEquipement
+public class OverPowerdBow : MilitaryEquipement
+//classe OverPowerdBow qui hérite de MilitaryEquipement
     {
+        //Constructeur de la classe qui fait appel à celui de la classe MilitaryEquipement
         public OverPowerdBow() : base("Arc Surpuissant", "Avec cela, votre archer pourra même transpercer un mur de pierre", 100, 95, "Archer","overpoweredBow.png") { }
     }
-    public class LightArmor : MilitaryEquipement
+public class LightArmor : MilitaryEquipement
+//classe LightArmor qui hérite de MilitaryEquipement
     {
+        //Constructeur de la classe qui fait appel à celui de la classe MilitaryEquipement
         public LightArmor() : base("Armure légère", "Votre paladin sera immédiatement plus agile et rapide, offrant un avantage en combat", 120, 105, "Paladin","LightArmor.png") { }
     }
 
 
-    public class Mission
+public class Mission
+//classe Mission
     {
+        //initialisation des attributs
         private static int missionCounter = 0;
         private int Id;
         private int difficulty;
@@ -1007,6 +1046,7 @@ public class Objects
         private Soldier soldierOnIt;
         private Objects objectToReceive;
 
+        //Constructeur de la classe
         public Mission(int _difficulty, int _numberOfDays, Objects _objectToReceive)
         {
             missionCounter++;
@@ -1020,25 +1060,29 @@ public class Objects
         }
 
         public int GetId()
+        //getter pour l'id de la mission (qui est une Sequence qui s'auto-incrémente)
         {
             return Id;
         }
         
         public int SurvivingChances(Soldier soldier)
+        //méthode qui renvoie les chances de survies estimées /100 d'un soldat pour une mission définie
         {
             return ((int)(100*(soldier.GetActualPV() + soldier.GetDamages() + soldier.GetDiscretionPoints()-soldier.GetFatigue())) /
                     (difficulty * 340));
         }
         public void EndureMission()
+        //méthode qui va gérer le déroulement d'une mission pour finalement déterminer comment elle va se finir (si elle est ratée ou réussie)
         {
             Soldier soldier = soldierOnIt;
             int survivingChances=SurvivingChances(soldier);
+            
             Random rnd = new Random();
             double randomValue = rnd.NextDouble();
             Random rnd2 = new Random();
             int randomValue2 = rnd2.Next(0, 101);
+            //on actualise la fatigue du soldat
             soldier.SetFatigue((int)(soldier.GetFatigue()+(100-soldier.GetFatigue()) * randomValue2/100));
-            //soldier.SetFatigue((int)(soldier.GetFatigue()+(10000*(100-soldier.GetFatigue()) / Math.Pow(survivingChances * randomValue2, 1.5))));
             if (soldier.GetFatigue() > 100)
             {
                 soldier.SetFatigue(100);
@@ -1047,6 +1091,7 @@ public class Objects
             {
                 soldier.SeBlesser();
             }
+            //on actualise les pvs du soldat
             soldier.SetActualsPv((int)(soldier.GetActualPV()*(1- (randomValue / (survivingChances/100.0)))));
             if (soldier.GetActualPV()<=0)
             {
@@ -1061,42 +1106,51 @@ public class Objects
         }
 
         public int getNumberOfDaysLeft()
+        //getter pour récupérer le nombre de jours restant avant que la mission soit achevée
         {
             return numberOfDaysLeft;
         }
 
         public int getNumberOfDaysTotal()
+        //getter pour récupérer la durée d'une mission en jours
         {
             return numberOfDaysTotal;
         }
         public void ActualizeNumberOfDays()
+        //méthode qui permet d'actualiser le compteur du nombre de jours restants d'une mission
         {
             numberOfDaysLeft--;
         }
         
         public int GetDifficulty()
+        //getter pour la difficulté d'une mission 
         {
             return difficulty;
         }
         public String GetState()
+        //getter pour l'état d'une mission (en cours/ réussie / ratée)
         {
             return state;
         }
         public Soldier GetSoldierOnIt()
+        //getter pour récupérer le soldat envoyé sur la mission 
         {
             return soldierOnIt;
         }
 
         public int GetEarnings()
+        //getter pour les pièces à gagner sur une mission
         {
             return (int)(50*(Math.Sqrt(difficulty * numberOfDaysTotal)));
         }
 
         public Objects GetObjectToReceive()
+        //getter pour l'objet à gagner sur une mission 
         {
             return objectToReceive;
         }
         public void SetSoldierOn(Soldier _soldierOnIt)
+        //setter pour ajouter un soldat sur la mission
         {
             state = "En cours";
             soldierOnIt = _soldierOnIt;
@@ -1104,16 +1158,20 @@ public class Objects
         }
 
     }
-    public interface IIntesify
+public interface IIntesify
+//interface comptant une méthode non définie que l'on va redéfinir dans les évènements non-désirables pour les rendre plus redoutables
     {
         void intensify();
     }
-    public class UndesirableEvents
+public class UndesirableEvents
+//classe pour les évènements indésirables
     {
+        //définition des attributs
         protected String name;
         protected String description;
         protected double HappeningProba;
 
+        //Constructeur
         public UndesirableEvents(String _name, String _description, double _happeningProba)
         {
             name = _name;
@@ -1122,76 +1180,90 @@ public class Objects
         }
 
         public void IntensifyProba()
+        //méthode pour augmenter la probabilité que l'évènement indésirable se produise 
         {
             HappeningProba *= 1.1;
         }
         public double GetHappeningProba()
+        //getter pour la probabilité qu'un de ces évènements indésirable se produise 
         {
             return HappeningProba;
         }
     }
-    public class Storm : UndesirableEvents, IIntesify
+public class Storm : UndesirableEvents, IIntesify
+//Création de la classe Storm qui hérite de UndesirableEvents et qui implémente l'interface IIntesify
     {
+        //création des attributs propres à cette classe fille
         private int reparationCosts;
 
-
+        //Constructeur qui fait appel au constructeur de la classe UndesirableEvents
         public Storm() : base("Tempête", "Un tempête s'est abatue sur votre royaume", 0.2)
         {
             reparationCosts = 15;
         }
         public void intensify()
+        //On redéfinie la manière dont on va intensifier l'évènement indésirable
         {
             reparationCosts = (int)Math.Floor(reparationCosts * 1.3);
-        }
+        }  
         public int GetReparationCosts()
+            //getter pour récupérer le montat des réparations
         {
             return reparationCosts;
         }
     }
 
-    public class Fire : UndesirableEvents, IIntesify
+public class Fire : UndesirableEvents, IIntesify
+//Création de la classe Fire qui hérite de UndesirableEvents et qui implémente l'interface IIntesify
     {
+        //création des attributs propres à cette classe fille
         private int reparationCosts;
         private double mortality;
 
-
+        //Constructeur qui fait appel au constructeur de la classe UndesirableEvents
         public Fire() : base("Feu", "Un incendie a dévasté votre royaume", 0.1)
         {
             reparationCosts = 20;
             mortality = 0.1;
         }
         public void intensify()
+        //On redéfinie la manière dont on va intensifier l'évènement indésirable
         {
             reparationCosts = (int)Math.Floor(reparationCosts * 1.3);
             mortality *= reparationCosts * 1.1;
         }
         public int GetReparationCosts()
+        //getter pour récupérer le montat des réparations 
         {
             return reparationCosts;
         }
-        public double GetMortality()
+        public double GetMortality() 
+        //getter pour récupérer la mortalité
         {
             return mortality;
         }
 
     }
-    public class Thief : UndesirableEvents, IIntesify
+public class Thief : UndesirableEvents, IIntesify
+//Création de la classe Thief qui hérite de UndesirableEvents et qui implémente l'interface IIntesify
     {
+        //création des attributs propres à cette classe fille
         private double probaPerObject;
-
-
+        
+        //Constructeur qui fait appel au constructeur de la classe UndesirableEvents
         public Thief() : base("Vol", "Un intrus a infiltré votre royaume pour voler des objets", 0.15)
         {
             probaPerObject = 0.1;
         }
         public void intensify()
+        //On redéfinie la manière dont on va intensifier l'évènement indésirable
         {
             probaPerObject *= probaPerObject * 1.1;
         }
         public double getProbaParObjet()
+            //getter pour récupérer la proba, par objet, qu'il soit volé
         {
             return probaPerObject;
         }
-
     }
 

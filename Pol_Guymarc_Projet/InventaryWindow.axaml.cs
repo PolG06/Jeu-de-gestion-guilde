@@ -97,7 +97,7 @@ namespace Pol_Guymarc_Projet
                 if (object_ is MilitaryEquipement militaryequipement)
                 {
                     ObjectType.Text = "Type: Equipement Militaire";
-                    ObjectOther.Text = "Peut être donné à " + militaryequipement.getTypeCompatibleHero();
+                    ObjectOther.Text = "Peut être donné à " + militaryequipement.getTypeCompatibleSoldier();
                 }
                 else if (object_ is Potion potion)
                 {
