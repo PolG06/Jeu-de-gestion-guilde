@@ -1,3 +1,4 @@
+// importation des bibliothèques
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Pol_Guymarc_Projet.Classes;
@@ -9,17 +10,24 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Avalonia.Controls.Primitives;
 
+// importation de nos classes
 namespace Pol_Guymarc_Projet
 {
+    // classe représentant la fenêtre pour donner un objet à un soldat
     public partial class ObjectToGiveSoldierWindow : Window
     {
+        // référence vers le soldat
         private readonly Soldier _soldier;
+        // instance unique de la fenêtre (Singleton)
         private static ObjectToGiveSoldierWindow? _instance;
+        // objet actuellement sélectionné
         private Objects? _selectedObject;
+        // liste des objets disponibles
         private List<Objects>? _objectList;
+        // référence vers la guilde
         private readonly Guilde _guilde;
 
-        // Singleton : récupération de l'instance avec Guilde
+        // Singleton : récupération de l'instance avec Guilde et Soldier
         public static ObjectToGiveSoldierWindow GetInstance(Guilde guilde, Soldier soldier)
         {
             if (_instance == null)
@@ -37,15 +45,20 @@ namespace Pol_Guymarc_Projet
             _soldier = soldier;
             InitializeComponent();
         }
+
         protected override void OnClosed(EventArgs e)
+        // méthode appelée à la fermeture de la fenêtre
         {
             base.OnClosed(e);
-            _instance = null; 
+            _instance = null; // permet de recréer la fenêtre plus tard
         }
 
         protected override void OnOpened(EventArgs e)
+        // méthode appelée à l'ouverture de la fenêtre
         {
             base.OnOpened(e);
+
+            // récupérer tous les objets pouvant être donnés au soldat
             _objectList = _guilde.GetObjectsDict().Keys.ToList();
             _objectList.RemoveAll(_object =>
                 (_guilde.GetObjectsDict()[_object] == 0) ||
@@ -56,8 +69,8 @@ namespace Pol_Guymarc_Projet
                 (_object is GoldBar) ||
                 (_object is RedRubis)
             );
-            
-            // Vérifier que la liste contient au moins un soldat
+
+            // sélectionner le premier objet si disponible
             if (_objectList.Count > 0)
             {
                 _selectedObject = _objectList[0];
@@ -67,10 +80,11 @@ namespace Pol_Guymarc_Projet
                 _selectedObject = new Objects();
             }
 
-            ShowObjectInfos(_selectedObject); // affichage sûr, après que les contrôles sont initialisés
+            ShowObjectInfos(_selectedObject); // afficher les infos de l'objet
         }
 
         private void ShowObjectInfos(Objects _object)
+        // affiche les informations de l'objet sélectionné
         {
             if (_object.GetName() == "Aucun")
             {
@@ -79,7 +93,6 @@ namespace Pol_Guymarc_Projet
                 GoRight.IsVisible = false;
                 GivingObject.IsVisible = false;
                 TitleObjectToGive.IsVisible = false;
-
             }
             else
             {
@@ -108,62 +121,45 @@ namespace Pol_Guymarc_Projet
                     ObjectType.Text = "Type: Guerison";
                     ObjectOther.Text = "Peut guérir la blessure de votre soldat";
                 }
-                
             }
-
-
         }
 
         private void GoLeftToObject(object? sender, RoutedEventArgs e)
+        // naviguer vers l'objet précédent
         {
             for (int i = 0; i < _objectList.Count; i++)
             {
                 if (_objectList[i] == _selectedObject)
                 {
-                    if (i == 0)
-                    {
-                        _selectedObject = _objectList[_objectList.Count - 1];
-                    }
-                    else
-                    {
-                        _selectedObject = _objectList[i - 1];
-                    }
-
+                    _selectedObject = (i == 0) ? _objectList[_objectList.Count - 1] : _objectList[i - 1];
                     ShowObjectInfos(_selectedObject);
                 }
-
-
             }
         }
 
         private void GoRightToObject(object? sender, RoutedEventArgs e)
+        // naviguer vers l'objet suivant
         {
             for (int i = 0; i < _objectList.Count; i++)
             {
                 if (_objectList[i] == _selectedObject)
                 {
-                    if (i == _objectList.Count - 1)
-                    {
-                        _selectedObject = _objectList[0];
-                    }
-                    else
-                    {
-                        _selectedObject = _objectList[i + 1];
-                    }
-
+                    _selectedObject = (i == _objectList.Count - 1) ? _objectList[0] : _objectList[i + 1];
                     ShowObjectInfos(_selectedObject);
                 }
-
-
             }
         }
+
         private void BackToMainMenu()
+        // retour à la fenêtre principale
         {
             var gameWindow = GameWindow.GetInstance(_guilde);
             gameWindow.Show();
             Close();
         }
+
         private void BackToMainSoldier(object? sender, RoutedEventArgs e)
+        // retour à la fenêtre des soldats
         {
             var soldierWindow = SoldierWindow.GetInstance(_guilde);
             soldierWindow.Show();
@@ -171,31 +167,31 @@ namespace Pol_Guymarc_Projet
         }
 
         private async void ValidateGivingObject(object? sender, RoutedEventArgs e)
+        // validation du don de l'objet au soldat
         {
             if (_selectedObject is Potion potion)
             {
                 _guilde.UsePotion(_soldier, potion);
-                _guilde.GetObjectsDict()[_selectedObject] -=1;
+                _guilde.GetObjectsDict()[_selectedObject] -= 1;
             }
             else if (_selectedObject is MilitaryEquipement militaryequipement)
             {
-                _guilde.GiveObjectToSoldier(militaryequipement,_soldier);
+                _guilde.GiveObjectToSoldier(militaryequipement, _soldier);
             }
             else if (_selectedObject is Recovery)
             {
                 _soldier.RemoveInjury();
                 _guilde.GetObjectsDict()[_selectedObject] -= 1;
             }
-            ValidateGivingObjectToSoldier.Text="Vous venez de donner "+_selectedObject.GetName()+" a "+_soldier.GetName();
+
+            ValidateGivingObjectToSoldier.Text = "Vous venez de donner " + _selectedObject.GetName() + " à " + _soldier.GetName();
             var flyout = FlyoutBase.GetAttachedFlyout(GivingObject);
             flyout?.ShowAt(GivingObject);
 
-            // Attendre 2 secondes puis cacher le flyout
+            // attendre 2 secondes puis cacher le flyout
             await Task.Delay(2000);
             flyout?.Hide();
             BackToMainMenu();
-            
         }
     }
-
 }

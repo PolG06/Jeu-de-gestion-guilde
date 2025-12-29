@@ -1,29 +1,38 @@
+// importation des bibliothèques
 using System;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Pol_Guymarc_Projet.Classes;
 
+//importation de nos classes
 namespace Pol_Guymarc_Projet;
 
 public partial class MainWindow : Window
+// classe de la fenêtre principale
 {
     private Guilde guilde;
+    // constructeur de la fenêtre principale
     public MainWindow()
     {
         InitializeComponent();
     }
+
     private void CreateGuilde(object? sender, EventArgs e)
+    // permet de créer et d'initialiser la guilde au lancement du jeu
     {
-        //Creation of your Guilde
+        // création de la guilde
         guilde = Guilde.Instance;
-        //Creation of your first Hero and adding it to your Army
+
+        // création du premier soldat et ajout à l'armée
         guilde.AddSoldier(new Swordsman("Maximus"));
-        //Creation of the natural or not undesirable events and adding to the list 
+
+        // création des évènements indésirables et ajout à la liste
         guilde.AddUndesirableEvent(new Fire());
         guilde.AddUndesirableEvent(new Storm());
         guilde.AddUndesirableEvent(new Thief());
-        //instanciation of the objects your would be able to get and use
-        AmethystPerl amethystPerl= new AmethystPerl();
+
+        // instanciation des objets utilisables dans le jeu
+        AmethystPerl amethystPerl = new AmethystPerl();
         RedRubis redRubis = new RedRubis();
         GoldBar goldBar = new GoldBar();
         LittlePotion littlePotion = new LittlePotion();
@@ -35,26 +44,29 @@ public partial class MainWindow : Window
         OverPowerdBow overPowerdBow = new OverPowerdBow();
         LightArmor lightArmor = new LightArmor();
         Recovery recovery = new Recovery();
-        //Adding them to the inventary dictionnary
-        guilde.AddObjects(amethystPerl,0);
-        guilde.AddObjects(redRubis,0);
-        guilde.AddObjects(goldBar,0);
-        guilde.AddObjects(littlePotion,0);
-        guilde.AddObjects(mediumPotion,0);
-        guilde.AddObjects(bigPotion,0);
-        guilde.AddObjects(lightCape,0);
-        guilde.AddObjects(metalFists,0);
-        guilde.AddObjects(soulSword,0);
-        guilde.AddObjects(overPowerdBow,0);
-        guilde.AddObjects(lightArmor,0);
-        guilde.AddObjects(recovery,0);
-        //Creation of the first mission and adding it to the list
-        guilde.AddMission(new Mission(1,1,mediumPotion));
+
+        // ajout des objets dans l'inventaire avec une quantité initiale de 0
+        guilde.AddObjects(amethystPerl, 0);
+        guilde.AddObjects(redRubis, 0);
+        guilde.AddObjects(goldBar, 0);
+        guilde.AddObjects(littlePotion, 0);
+        guilde.AddObjects(mediumPotion, 0);
+        guilde.AddObjects(bigPotion, 0);
+        guilde.AddObjects(lightCape, 0);
+        guilde.AddObjects(metalFists, 0);
+        guilde.AddObjects(soulSword, 0);
+        guilde.AddObjects(overPowerdBow, 0);
+        guilde.AddObjects(lightArmor, 0);
+        guilde.AddObjects(recovery, 0);
+
+        // création de la première mission et ajout à la liste
+        guilde.AddMission(new Mission(1, 1, mediumPotion));
     }
 
     private void MainWindow_PointerPressed(object? sender, PointerPressedEventArgs e)
+    // permet de passer de la fenêtre principale à la fenêtre de jeu
     {
-        var gameWindow = GameWindow.GetInstance(guilde); 
+        var gameWindow = GameWindow.GetInstance(guilde);
         gameWindow.Show();
         Close();
     }

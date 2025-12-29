@@ -1,17 +1,24 @@
+//La fenêtre qui va s'afficher lorsque l'on va passer à l'après-midi
+//Elle va afficher tous les changements qui ont eu lieu
+
+//importation des bibliothèques
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Pol_Guymarc_Projet.Classes;
 using System;
 using System.Collections.Generic;
 
+//importation de nos classes
 namespace Pol_Guymarc_Projet
+//la classe de la fenêtre
 {
     public partial class GoingAfternoonWindow : Window
     {
         private static GoingAfternoonWindow? _instance;
+        //on va réutiliser la guilde que l'on vient de créer dans notre fenêtre principale
         private readonly Guilde _guilde;
 
-        // Singleton : récupération de l'instance avec Guilde
+        //Singleton : Méthode que l'on va appeler pour éviter de créer 2 fois la même fenêtre
         public static GoingAfternoonWindow GetInstance(Guilde guilde)
         {
             if (_instance == null)
@@ -21,7 +28,7 @@ namespace Pol_Guymarc_Projet
 
             return _instance;
         }
-
+        //constructeur privé de la classe où l'on récupère la guilde en tant que variable globale
         public static GoingAfternoonWindow CreateNew(Guilde guilde)
         {
             return new GoingAfternoonWindow(guilde);
@@ -37,11 +44,12 @@ namespace Pol_Guymarc_Projet
         protected override void OnOpened(EventArgs e)
         {
             base.OnOpened(e);
-            _instance = null;
+            _instance = null; // Permet de recréer plus tard une nouvelle fenêtre
 
         }
 
         private void ShowUndesirableEvents(object? sender, EventArgs e)
+        //permet d'afficher tous les evènements indésirables qui ont pu se produire et leurs conséquences
         {
             AStormHappened.IsVisible = false;
             AFireHappened.IsVisible = false;
@@ -133,10 +141,9 @@ namespace Pol_Guymarc_Projet
         }
 
         private void BackToMainMenu(object? sender, RoutedEventArgs e)
+        // gère le retour au menu principal lorsque l'on clique sur le bouton dédié 
         {
             var gameWindow = GameWindow.GetInstance(_guilde);
-
-            // Affiche la fenêtre principale
             gameWindow.Show();
             Close();
         }

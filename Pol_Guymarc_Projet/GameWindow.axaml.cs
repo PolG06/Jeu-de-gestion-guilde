@@ -1,16 +1,22 @@
+//La fenêtre principale
+
+//importation des bibliothèques
 using System;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Pol_Guymarc_Projet.Classes;
 
+//importation de nos classes
 namespace Pol_Guymarc_Projet;
 
 public partial class GameWindow : Window
+//la classe de la fenêtre
 {
     private static GameWindow? _instance;
+    //on va réutiliser la guilde que l'on vient de créer dans notre fenêtre principale
     private readonly Guilde _guilde;
-
-    // Propriété pour accéder à l’instance
+    
+    //Singleton : Méthode que l'on va appeler pour éviter de créer 2 fois la même fenêtre
     public static GameWindow GetInstance(Guilde guilde)
     {
         if (_instance == null)
@@ -19,8 +25,8 @@ public partial class GameWindow : Window
         }
         return _instance;
     }
-
-    // Constructeur privé
+    
+    //constructeur privé de la classe où l'on récupère la guilde en tant que variable globale
     private GameWindow(Guilde guilde)
     {
         _guilde = guilde;
@@ -30,17 +36,18 @@ public partial class GameWindow : Window
     protected override void OnClosed(EventArgs e)
     {
         base.OnClosed(e);
-        _instance = null; // Permet de recréer plus tard
+        _instance = null; // Permet de recréer plus tard une nouvelle fenêtre
     }
-    //Creation of the Guilde
     private void SeeSoldiers(object? sender, RoutedEventArgs e)
+    // permet d'ouvrir une fenêtre où l'on va afficher tous nos soldats
     {
         var soldierWindow = SoldierWindow.CreateNew(_guilde); 
         soldierWindow.Show();
         Close();
     }
 
-    private void SeeInventary(object? sender, RoutedEventArgs e)
+    private void SeeInventary(object? sender, RoutedEventArgs e) 
+    // permet d'ouvrir une fenêtre où l'on va afficher tous les objets contenus dans notre inventaire
     {
         var inventaryWindow = InventaryWindow.CreateNew(_guilde);; 
         inventaryWindow.Show();
@@ -48,6 +55,7 @@ public partial class GameWindow : Window
     }
 
     private void SeeMissions(object? sender, RoutedEventArgs e)
+    // permet d'ouvrir une fenêtre où l'on va afficher toutes nos missions 
     {
         var missionWindow = MissionWindow.CreateNew(_guilde);
         missionWindow.Show();
@@ -55,6 +63,7 @@ public partial class GameWindow : Window
     }
 
     private void GoToMerchant(object? sender, RoutedEventArgs e)
+    // permet d'ouvrir la fenêtre principale du marchand 
     {
         var merchantWindow = MerchantWindow.CreateNew(_guilde);
         merchantWindow.Show();
@@ -62,6 +71,7 @@ public partial class GameWindow : Window
     }
 
     private void SkipTheDayMoment(object? sender, RoutedEventArgs e)
+    //permet de passer le moment de la journée
     {
         if (_guilde.GetDayMoment() == "Matin")
         {
@@ -79,6 +89,8 @@ public partial class GameWindow : Window
         }
         else
         {
+            //si c'est le soir, on verifie si la partie n'est pas perdue, sinon on passe au jour suivant 
+            //on va donc passer une série de conditions pour savoir si la partie continue toujours
             bool continuer= true;
             if (_guilde.GetNumberOfMeats() + _guilde.GetnumberOfMeatsComingTomorrow() - _guilde.CalculateTodaysNumberOfMeatsDistributedToSoldiers() < 0)
             {
@@ -125,6 +137,7 @@ public partial class GameWindow : Window
     }
     
     private void AtualizeDisplayGameWindow(object? sender, EventArgs e)
+    //méthode qui actualise le contenu des textes dans la fenêtre
     {
         DayCounter.Text = "Jour n°" + _guilde.GetDayCounter();
         MoneyCounter.Text += _guilde.GetMoney() + " Pièces";

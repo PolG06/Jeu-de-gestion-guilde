@@ -1,3 +1,4 @@
+// importation des bibliothèques
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Pol_Guymarc_Projet.Classes;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 using Avalonia.Controls.Primitives;
 using Avalonia.Media.Imaging;
 
-
+// importation de nos classes
 namespace Pol_Guymarc_Projet
 {
     public partial class SoldierWindow : Window

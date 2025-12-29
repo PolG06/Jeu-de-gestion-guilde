@@ -987,19 +987,19 @@ public class LittlePotion : Potion
 //classe LittlePotion qui hérite de Potion
     {
         //Constructeur de la classe qui fait appel à celui de la classe Potion
-        public LittlePotion() : base("Petite Potion", "Permet de soigner 25 PV", 10, 8, 50,"littlepotion.png") { }
+        public LittlePotion() : base("Petite Potion", "Permet de soigner 50 PV", 10, 8, 50,"littlepotion.png") { }
     }
 public class MediumPotion : Potion
 //classe MediumPotion qui hérite de Potion
     {
         //Constructeur de la classe qui fait appel à celui de la classe Potion
-        public MediumPotion() : base("Moyenne Potion", "Permet de soigner 50 PV", 15, 13, 100,"mediumpotion.png") { }
+        public MediumPotion() : base("Moyenne Potion", "Permet de soigner 100 PV", 15, 13, 100,"mediumpotion.png") { }
     }
 public class BigPotion : Potion
 //classe BigPotion qui hérite de Potion
     {
         //Constructeur de la classe qui fait appel à celui de la classe Potion
-        public BigPotion() : base("Grande Potion", "Permet de soigner 100 PV", 20, 18, 175,"bigPotion.png") { }
+        public BigPotion() : base("Grande Potion", "Permet de soigner 175 PV", 20, 18, 175,"bigPotion.png") { }
     }
 public class LightCape : MilitaryEquipement
 //classe LightCape qui hérite de MilitaryEquipement
@@ -1093,6 +1093,7 @@ public class Mission
             }
             //on actualise les pvs du soldat
             soldier.SetActualsPv((int)(soldier.GetActualPV()*(1- (randomValue / (survivingChances/100.0)))));
+            ReinitializeNumberOfDaysLeft();
             if (soldier.GetActualPV()<=0)
             {
                 soldier.SetActualsPv(0);
@@ -1121,6 +1122,13 @@ public class Mission
         {
             numberOfDaysLeft--;
         }
+
+        public void ReinitializeNumberOfDaysLeft() 
+        //méthode qui permet de réinitialiser le compteur du nombre de jours restants d'une mission
+        {
+            numberOfDaysLeft = numberOfDaysTotal;
+        }
+        
         
         public int GetDifficulty()
         //getter pour la difficulté d'une mission 

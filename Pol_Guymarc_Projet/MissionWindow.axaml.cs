@@ -1,15 +1,22 @@
+// importation des bibliothèques
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Pol_Guymarc_Projet.Classes;
 using System;
 using System.IO;
 using Avalonia.Media.Imaging;
+
+//importation de nos classes
 namespace Pol_Guymarc_Projet
 {
+    // classe représentant la fenêtre de gestion des missions
     public partial class MissionWindow : Window
     {
+        // instance unique de la fenêtre (Singleton)
         private static MissionWindow? _instance;
+        // mission actuellement sélectionnée
         private Mission? _selectedMission;
+        // référence vers la guilde
         private readonly Guilde _guilde;
 
         // Singleton : récupération de l'instance avec Guilde
@@ -23,6 +30,7 @@ namespace Pol_Guymarc_Projet
             return _instance;
         }
 
+        // création forcée d'une nouvelle fenêtre
         public static MissionWindow CreateNew(Guilde guilde)
         {
             return new MissionWindow(guilde);
@@ -36,65 +44,73 @@ namespace Pol_Guymarc_Projet
         }
 
         protected override void OnOpened(EventArgs e)
+        // méthode appelée à l'ouverture de la fenêtre
         {
             base.OnOpened(e);
-                // Vérifier que la liste contient au moins une mission
-                
+            // vérifier que la guilde possède au moins une mission
             if (_guilde.GetMissionsList().Count > 0)
             {
                 _selectedMission = _guilde.GetMissionsList()[0];
-                ShowMissionInfos(_selectedMission); // affichage sûr, après que les contrôles sont initialisés
+                // affichage des informations de la mission sélectionnée
+                ShowMissionInfos(_selectedMission);
             }
         }
 
         protected override void OnClosed(EventArgs e)
+        // méthode appelée à la fermeture de la fenêtre
         {
             base.OnClosed(e);
-            _instance = null; // Permet de recréer plus tard
+            _instance = null; // permet de recréer la fenêtre plus tard
         }
+
         private void ShowMissionInfos(Mission mission)
+        // affiche les informations de la mission sélectionnée
         {
             if (mission.GetState() == "Libre")
             {
                 EnvoyerSoldat.Content = "Assigner un soldat";
                 EnvoyerSoldat.IsVisible = true;
                 MissionNumberOfDays.Text = "Durée: " + mission.getNumberOfDaysTotal() + " jours";
-                
             }
-            else if(mission.GetState() == "En cours")
+            else if (mission.GetState() == "En cours")
             {
                 EnvoyerSoldat.IsVisible = false;
-                MissionSoldierOnIt.Text="Soldat dessus: "+mission.GetSoldierOnIt().GetName();
+                MissionSoldierOnIt.Text = "Soldat dessus: " + mission.GetSoldierOnIt().GetName();
                 MissionNumberOfDays.Text = "Nombre de jours restants: " + mission.getNumberOfDaysLeft();
             }
-            else if(mission.GetState() == "Réussie")
+            else if (mission.GetState() == "Réussie")
             {
                 EnvoyerSoldat.IsVisible = true;
                 EnvoyerSoldat.Content = "Recommencer";
                 MissionNumberOfDays.Text = "Durée: " + mission.getNumberOfDaysTotal() + " jours";
             }
-            else if(mission.GetState() == "Ratée")
+            else if (mission.GetState() == "Ratée")
             {
                 EnvoyerSoldat.IsVisible = true;
                 EnvoyerSoldat.Content = "Réessayer";
                 MissionNumberOfDays.Text = "Durée: " + mission.getNumberOfDaysTotal() + " jours";
             }
+
+            // affichage des informations générales de la mission
             MissionName.Text = "Mission n° " + mission.GetId();
-            MissionPicture.Source=new Bitmap(Path.Combine(Directory.GetParent(AppContext.BaseDirectory).Parent.Parent.Parent.FullName,
+            MissionPicture.Source = new Bitmap(Path.Combine(
+                Directory.GetParent(AppContext.BaseDirectory).Parent.Parent.Parent.FullName,
                 "images", "mission.png"));
             MissionDifficulty.Text = "Difficulté :" + mission.GetDifficulty();
-            
             MissionState.Text = "Etat: " + mission.GetState();
-            MissionEarnings.Text = "Argent à gagner: " + mission.GetEarnings()+" pièces";
+            MissionEarnings.Text = "Argent à gagner: " + mission.GetEarnings() + " pièces";
             MissionObjectsToReceive.Text = "Objet à gagner: " + mission.GetObjectToReceive().GetName();
-            NumberOfMissions.Text ="Nombre total de missions: "+ _guilde.GetMissionsList().Count;
-            NumberOfFreeMissions.Text ="Nombre total de missions libres : "+ NumberOfMissionsByState("Libre");
-            NumberOfActiveMissions.Text = "Nombre total de missions en cours: "+NumberOfMissionsByState("En cours");
-            NumberOfCompletedMissions.Text = "Nombre total de missions réussies: "+NumberOfMissionsByState("Réussie");
-            NumberOfFailedMissions.Text = "Nombre total de missions ratées: "+NumberOfMissionsByState("Ratée");
+
+            // affichage des statistiques globales des missions
+            NumberOfMissions.Text = "Nombre total de missions: " + _guilde.GetMissionsList().Count;
+            NumberOfFreeMissions.Text = "Nombre total de missions libres : " + NumberOfMissionsByState("Libre");
+            NumberOfActiveMissions.Text = "Nombre total de missions en cours: " + NumberOfMissionsByState("En cours");
+            NumberOfCompletedMissions.Text = "Nombre total de missions réussies: " + NumberOfMissionsByState("Réussie");
+            NumberOfFailedMissions.Text = "Nombre total de missions ratées: " + NumberOfMissionsByState("Ratée");
         }
 
         private int NumberOfMissionsByState(string state)
+        // compte le nombre de missions selon leur état
         {
             int counter = 0;
             foreach (Mission mission in _guilde.GetMissionsList())
@@ -104,23 +120,24 @@ namespace Pol_Guymarc_Projet
                     counter++;
                 }
             }
-
             return counter;
         }
+
         private void GoLeftToMission(object? sender, RoutedEventArgs e)
+        // permet de naviguer vers la mission précédente
         {
             EnvoyerSoldat.IsVisible = true;
-            if (_selectedMission== _guilde.GetMissionsList()[0])
+            if (_selectedMission == _guilde.GetMissionsList()[0])
             {
                 _selectedMission = _guilde.GetMissionsList()[_guilde.GetMissionsList().Count - 1];
             }
             else
             {
-                for (int i=0; i<_guilde.GetMissionsList().Count; i++)
+                for (int i = 0; i < _guilde.GetMissionsList().Count; i++)
                 {
                     if (_guilde.GetMissionsList()[i] == _selectedMission)
                     {
-                        _selectedMission=_guilde.GetMissionsList()[i-1];
+                        _selectedMission = _guilde.GetMissionsList()[i - 1];
                     }
                 }
             }
@@ -128,40 +145,40 @@ namespace Pol_Guymarc_Projet
         }
 
         private void GoRightToMission(object? sender, RoutedEventArgs e)
+        // permet de naviguer vers la mission suivante
         {
             EnvoyerSoldat.IsVisible = true;
-            if (_selectedMission == _guilde.GetMissionsList()[_guilde.GetMissionsList().Count -1])
+            if (_selectedMission == _guilde.GetMissionsList()[_guilde.GetMissionsList().Count - 1])
             {
                 _selectedMission = _guilde.GetMissionsList()[0];
             }
             else
             {
-                for (int i=0; i<_guilde.GetMissionsList().Count; i++)
+                for (int i = 0; i < _guilde.GetMissionsList().Count; i++)
                 {
                     if (_guilde.GetMissionsList()[i] == _selectedMission)
-                        
                     {
-                        _selectedMission=_guilde.GetMissionsList()[i+1];
+                        _selectedMission = _guilde.GetMissionsList()[i + 1];
                         break;
-
                     }
                 }
             }
             ShowMissionInfos(_selectedMission);
         }
+
         private void BackToMainMenue(object? sender, RoutedEventArgs e)
+        // retour à la fenêtre principale du jeu
         {
             var gameWindow = GameWindow.GetInstance(_guilde);
-
-            // Affiche la fenêtre principale
             gameWindow.Show();
             Close();
         }
 
         private void SendSoldierOnIt(object? sender, RoutedEventArgs e)
+        // ouverture de la fenêtre de sélection d'un soldat pour la mission
         {
-            var selectingSoldierToStartMissionWindow = SelectingSoldierToStartMissionWindow.GetInstance(_guilde, _selectedMission);
-            // Affiche la fenêtre principale
+            var selectingSoldierToStartMissionWindow =
+                SelectingSoldierToStartMissionWindow.GetInstance(_guilde, _selectedMission);
             selectingSoldierToStartMissionWindow.Show();
             Close();
         }

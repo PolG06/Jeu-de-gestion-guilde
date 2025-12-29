@@ -44,8 +44,7 @@
                                 <ColumnDefinition Width="*" />   <!-- Espace extensible -->
                                 <ColumnDefinition Width="Auto"/> <!-- Colonne droite -->
                         </Grid.ColumnDefinitions>
-
-                        <!-- Bloc gauche -->
+                        
                         <StackPanel Grid.Column="0">
                                 <TextBlock Name="DayCounter" />
                                 <TextBlock Name="DayMoment" />
@@ -53,8 +52,7 @@
                                 <TextBlock Name="BreadsCounter" Text="Nombre de pains en réserve: "/>  
                                 <TextBlock Name="MeatsCounter" Text="Nombre de viandes en réserve: "/>  
                         </StackPanel>
-
-                        <!-- Bloc droite -->
+                        
                         <StackPanel Grid.Column="2" HorizontalAlignment="Right">
                                 <TextBlock Name="NextDayMoneyCounter" Text="Pour le jour suivant, vous devrez avoir au minimum : "/>   
                                 <TextBlock Name="NextDayBreadsCounter" Text="Pour le jour suivant, vous devrez avoir au minimum "/>  

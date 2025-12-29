@@ -1,9 +1,10 @@
+// importation des bibliothèques
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Pol_Guymarc_Projet.Classes;
 using System;
 
-
+// importation de nos classes
 namespace Pol_Guymarc_Projet
 {
     public partial class YouLooseWindow : Window
@@ -75,4 +76,4 @@ namespace Pol_Guymarc_Projet
             Close();
         }
     }
-}      
+}
